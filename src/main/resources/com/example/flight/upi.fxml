@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="211.0" style="-fx-background-color: #0598ff;">
+         <children>
+            <Button layoutX="51.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: black;" text="OTHER UPI APPS" textFill="#0598ff" />
+            <ImageView fitHeight="47.0" fitWidth="83.0" layoutX="14.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@gpay.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="67.0" layoutX="119.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@paytm1.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="83.0" layoutX="119.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ph.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select your UPI app" />
+            <Text layoutX="22.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to use UPI payment?" />
+         </children></AnchorPane>
+      <ImageView fitHeight="48.0" fitWidth="83.0" layoutX="14.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@bh.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="185.0" layoutX="14.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@cer.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="246.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Selected app for UPI" />
+      <TextField layoutX="246.0" layoutY="73.0" style="-fx-background-color: White; -fx-border-color: #0598ff;" text="GPay" />
+      <Text layoutX="246.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your UPI Id:" />
+      <Button layoutX="328.0" layoutY="291.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" style="-fx-background-color: #27db3c; -fx-border-color: gray;" text="Verify and Pay" />
+      <TextField layoutX="246.0" layoutY="206.0" promptText="Example123@upi" style="-fx-background-color: White; -fx-border-color: #0598ff;" />
+   </children>
+</AnchorPane>
