@@ -63,7 +63,9 @@ public class LoginController {
         String username = tf_username.getText();
         String password = tf_password.getText();
 
-        if (validateLogin(username, password)) {
+        if (username.isEmpty() || password.isEmpty()) {
+            label_loginmessage.setText("Enter Your Username And Password.");
+        }else if (validateLogin(username, password)) {
             label_loginmessage.setText("Login successful!");
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
@@ -77,9 +79,7 @@ public class LoginController {
             stage.setScene(scene);
             stage.show();
             gotoHome();
-        } else if (username.isEmpty() || password.isEmpty()) {
-            label_loginmessage.setText("Enter Your Username And Password.");
-        }
+        } 
         else {
             label_loginmessage.setText("Invalid credentials.");
         }
