@@ -46,7 +46,7 @@
             </Label>
             <ImageView fx:id="Menu" fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Images/Menu.jpg" />
+                  <Image url="@../../../../java/com/example/flight/Images/Menu.jpg" />
                </image>
             </ImageView>
             <Label fx:id="UserName" layoutX="791.0" layoutY="27.0" textFill="#fafcfc">
@@ -56,7 +56,7 @@
             </Label>
             <ImageView fx:id="MenuBack" fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Images/Menu.jpg" />
+                  <Image url="@../../../../java/com/example/flight/Images/Menu.jpg" />
                </image>
             </ImageView>
             <Label fx:id="usernamecopy" alignment="CENTER" layoutX="740.0" layoutY="35.0" prefHeight="30.0" prefWidth="92.0" textFill="#edf1f4">
@@ -67,9 +67,9 @@
             <FontAwesomeIconView fill="#f8f7f7" glyphName="USER" layoutX="775.0" layoutY="32.0" selectionFill="#0494f4" size="30" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="165.0" fitWidth="159.0" layoutX="346.0" layoutY="190.0">
+      <ImageView fx:id="Image_BookCancel" fitHeight="165.0" fitWidth="159.0" layoutX="346.0" layoutY="190.0">
          <image>
-            <Image url="@../../../../../Images/TCImage.jpg" />
+            <Image url="@../../../../java/com/example/flight/Images/TCImage.jpg" />
          </image>
       </ImageView>
       <Button layoutX="346.0" layoutY="177.0" mnemonicParsing="false" onAction="#show" prefWidth="55.0" style="-fx-background-color: transparent;" text="Search" textFill="#0598ff" />

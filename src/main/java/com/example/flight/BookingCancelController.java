@@ -63,6 +63,10 @@ public class BookingCancelController implements Initializable {
     private TextField tf_username;
 
     @FXML
+    private ImageView Image_BookCancel;
+
+
+    @FXML
     private Label label_msg;
     private Main mainApp;
     public void setMainApp(Main mainApp) {

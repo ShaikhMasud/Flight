@@ -56,12 +56,12 @@
             </MenuButton>
             <ImageView fx:id="Menu" fitHeight="25.0" fitWidth="31.0" layoutX="22.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Images/Menu.jpg" />
+                  <Image url="@../../../../java/com/example/flight/Images/Menu.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="MenuBack" fitHeight="25.0" fitWidth="31.0" layoutX="22.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Images/Menu.jpg" />
+                  <Image url="@../../../../java/com/example/flight/Images/Menu.jpg" />
                </image>
             </ImageView>
             <FontAwesomeIconView fill="#f8f7f7" glyphName="USER" layoutX="938.0" layoutY="37.0" selectionFill="#0494f4" size="30" />

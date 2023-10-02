@@ -65,7 +65,7 @@ public class LoginController {
 
         if (validateLogin(username, password)) {
             label_loginmessage.setText("Login successful!");
-            // Implement the logic for what to do after a successful login
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             root = loader.load();
 
