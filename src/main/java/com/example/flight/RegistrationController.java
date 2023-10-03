@@ -51,6 +51,8 @@ public class RegistrationController {
         }
         else if (!isNumeric(tf_contact.getText())) {
             label_message.setText("Contact should only contain numbers.");
+        }else if (!isAlpha(firstname) || !isAlpha(lastname)) {
+            label_message.setText("First name and last name should contain only alphabetical characters.");
         }
         else {
 
@@ -64,6 +66,11 @@ public class RegistrationController {
                 label_message.setText("Registration failed.");
             }
         }
+    }
+
+    private boolean isAlpha(String value) {
+        // Use a regular expression to check if the string contains only alphabetical characters
+        return value.matches("^[a-zA-Z]+$");
     }
 
     private boolean isNumeric(String str) {
