@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegistrationController {
@@ -17,12 +18,16 @@ public class RegistrationController {
     private TextField tf_contact;
     @FXML
     private TextField tf_username;
+
     @FXML
     private PasswordField pf_password;
-    @FXML
-    private PasswordField pf_confirmPassword;
+
     @FXML
     private Label label_message;
+
+    @FXML
+    private PasswordField pf_comfirm;
+
 
     private Main mainApp;
 
@@ -30,59 +35,82 @@ public class RegistrationController {
         this.mainApp = mainApp;
     }
 
-    @FXML
-    private void register() {
+    public void register() {
         String firstname = tf_firstname.getText();
         String lastname = tf_lastname.getText();
         String username = tf_username.getText();
-        String contact = tf_contact.getText();
-        String password = pf_password.getText();
-        String confirmPassword = pf_confirmPassword.getText();
+//        int contact = Integer.parseInt(tf_contact.getText());
+        long contact = Long.parseLong(tf_contact.getText());
 
-        if (firstname.isEmpty() || lastname.isEmpty() || username.isEmpty() || contact.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            label_message.setText("All fields are required.");
-        } else if (!contact.matches("\\d+")) {
+        String password = pf_password.getText();
+        String confirmPassword = pf_comfirm.getText();
+
+
+        if (username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || tf_contact.getText().isEmpty() || confirmPassword.isEmpty()) {
+            label_message.setText("Enter Your Details.");
+        }
+        else if (!isNumeric(tf_contact.getText())) {
             label_message.setText("Contact should only contain numbers.");
-        } else if (!password.equals(confirmPassword)) {
-            label_message.setText("Passwords do not match.");
-        } else {
-            // Attempt to register the user in the database
-            if (registerUser(firstname, lastname, username, contact, password)) {
+        }
+        else {
+
+            if (usernameExists(username)) {
+                label_message.setText("User already exists.");
+            } else if (!password.equals(confirmPassword)) {
+                label_message.setText("Passwords do not match.");
+            } else if (createUser(firstname, lastname, username, contact, password, confirmPassword)) {
                 label_message.setText("Registration successful!");
-                clearFields();
             } else {
-                label_message.setText("Registration failed. Please try again.");
+                label_message.setText("Registration failed.");
             }
         }
     }
 
-    private boolean registerUser(String firstname, String lastname, String username, String contact, String password) {
+    private boolean isNumeric(String str) {
+        try {
+            Long.parseLong(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+
+
+
+    private boolean usernameExists(String username) {
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (firstname, lastname, username, contact, password) VALUES (?, ?, ?, ?, ?)")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE username = ?")) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            int count = rs.getInt(1);
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true; // Assume an error occurred to prevent registration
+        }
+    }
+
+    private boolean createUser(String firstname,String lastname,String username, long contacts,String password,String comfirmpassword) {
+        // Implement database user creation here
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO users(firstname,lastname,username,contacts,password,comfirmpassword) VALUES (?, ?, ?, ?,?,?)")) {
             stmt.setString(1, firstname);
             stmt.setString(2, lastname);
             stmt.setString(3, username);
-            stmt.setString(4, contact);
+            stmt.setLong(4, contacts);
             stmt.setString(5, password);
+            stmt.setString(6, comfirmpassword);
             int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
+            return rowsAffected == 1;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    private void clearFields() {
-        tf_firstname.clear();
-        tf_lastname.clear();
-        tf_username.clear();
-        tf_contact.clear();
-        pf_password.clear();
-        pf_confirmPassword.clear();
-    }
-
-    @FXML
-    private void goToLogin() {
+    public void goToLogin() {
         try {
             mainApp.showLogin();
         } catch (IOException e) {
