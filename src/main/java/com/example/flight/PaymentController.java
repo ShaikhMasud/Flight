@@ -52,52 +52,50 @@
 //    @FXML
 //    private TextField tf_cvvcode;
 //
-//    public void Book() {
-//        String firstname = .getText();
-//        String lastname = tf_lastname.getText();
-//        String username = tf_username.getText();
-////        int contact = Integer.parseInt(tf_contact.getText());
-//        long contact = Long.parseLong(tf_contact.getText());
+//        @FXML
+//        private void handlePaymentDone(ActionEvent event) {
+//            // Collect the data needed for the booking
+//            String firstName = tf_FirstName.getText();
+//            String lastName = tf_LastName.getText();
+//            String cardNumber = tf_CardNumber.getText();
+//            LocalDate expiryDate = ExpiryDate.getValue();
 //
-//        String password = pf_password.getText();
-//        String confirmPassword = pf_comfirm.getText();
+//            // Access flight details from TicketBookingController
+//            FlightDetails flightDetails = getFlightDetails();
 //
+//            // Create a database connection and insert the booking record with flight details
+//            try (Connection conn = DatabaseConnection.getConnection()) {
+//                // Define the SQL query for inserting into the "booking" table
+//                String insertQuery = "INSERT INTO booking (first_name, last_name, card_number, expiry_date, flight_id, flight_name) " +
+//                        "VALUES (?, ?, ?, ?, ?, ?)";
 //
-//        if (username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || tf_contact.getText().isEmpty() || confirmPassword.isEmpty()) {
-//            label_message.setText("Enter Your Details.");
-//        }
-//        else if (!isNumeric(tf_contact.getText())) {
-//            label_message.setText("Contact should only contain numbers.");
-//        }
-//        else {
+//                // Prepare the SQL statement with parameters
+//                PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
+//                preparedStatement.setString(1, firstName);
+//                preparedStatement.setString(2, lastName);
+//                preparedStatement.setString(3, cardNumber);
+//                preparedStatement.setDate(4, java.sql.Date.valueOf(expiryDate));
+//                preparedStatement.setInt(5, flightDetails.getFlightId());
+//                preparedStatement.setString(6, flightDetails.getFlightName());
 //
-//            if (usernameExists(username)) {
-//                label_message.setText("User already exists.");
-//            } else if (!password.equals(confirmPassword)) {
-//                label_message.setText("Passwords do not match.");
-//            } else if (createUser(firstname, lastname, username, contact, password, confirmPassword)) {
-//                label_message.setText("Registration successful!");
-//            } else {
-//                label_message.setText("Registration failed.");
+//                // Execute the SQL statement
+//                int rowsAffected = preparedStatement.executeUpdate();
+//
+//                if (rowsAffected > 0) {
+//                    // Booking was successful, you can display a success message or navigate to a confirmation page
+//                    PaymentDone_label.setText("Booking Successful!");
+//                } else {
+//                    // Booking failed, handle the error
+//                    PaymentDone_label.setText("Booking Failed!");
+//                }
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//                // Handle database connection or SQL query execution errors here
 //            }
 //        }
-//    }
 //
-//    private boolean BookTicket(String firstname,String lastname,String username, long contacts,String password,String comfirmpassword) {
-//        // Implement database user creation here
-//        try (Connection conn = DatabaseConnection.getConnection();
-//             PreparedStatement stmt = conn.prepareStatement("INSERT INTO users(firstname,lastname,username,contacts,password,comfirmpassword) VALUES (?, ?, ?, ?,?,?)")) {
-//            stmt.setString(1, firstname);
-//            stmt.setString(2, lastname);
-//            stmt.setString(3, username);
-//            stmt.setLong(4, contacts);
-//            stmt.setString(5, password);
-//            stmt.setString(6, comfirmpassword);
-//            int rowsAffected = stmt.executeUpdate();
-//            return rowsAffected == 1;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
+//
+//
+//
+//
 //}

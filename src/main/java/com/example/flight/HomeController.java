@@ -17,6 +17,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -53,7 +54,8 @@ public class HomeController implements Initializable {
 
     @FXML
     private ImageView Image_Home;
-
+    @FXML
+    private DatePicker datebox;
 
     @FXML
     private Button Button_gotobook;
@@ -77,7 +79,6 @@ public class HomeController implements Initializable {
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
-
 
 
     @Override
@@ -194,9 +195,12 @@ public class HomeController implements Initializable {
         }
     }
 
+
+
     public void Search(ActionEvent event) throws IOException {
         String leave = leavechoicebox.getValue();
         String destination = destinationchoicebox.getValue();
+        LocalDate date = datebox.getValue();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketbooking.fxml"));
         root = loader.load();
@@ -204,13 +208,14 @@ public class HomeController implements Initializable {
         TicketBookingController ticketBookingController = loader.getController();
         ticketBookingController.displayleave(leave);
         ticketBookingController.displaydestination(destination);
+        LocalDate selectedDate = datebox.getValue();
+        ticketBookingController.displaydate(selectedDate);
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
+
 }
 

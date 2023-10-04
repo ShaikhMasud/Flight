@@ -75,7 +75,7 @@
             <Label layoutX="632.0" layoutY="97.0" text="LEAVING FROM" textFill="#0598ff" />
             <Label layoutX="797.0" layoutY="97.0" text="DESTINATION AT" textFill="#0598ff" />
             <ChoiceBox fx:id="destinationchoicebox" layoutX="797.0" layoutY="128.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
-            <DatePicker layoutX="632.0" layoutY="239.0" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
+            <DatePicker fx:id="datebox" layoutX="632.0" layoutY="239.0" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
             <Button fx:id="Button_Search" layoutX="632.0" layoutY="316.0" mnemonicParsing="false" onAction="#Search" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: #2d8dc9;" text="Search" textFill="#f8f6f6" />
             <AnchorPane layoutX="-1.0" prefHeight="474.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>

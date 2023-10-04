@@ -29,7 +29,7 @@
       <TextField fx:id="tf_price" layoutX="659.0" layoutY="223.0" style="-fx-background-color: tRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="tf_leave" layoutX="658.0" layoutY="274.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: tRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="tf_destination" layoutX="658.0" layoutY="334.0" style="-fx-background-color: tRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button fx:id="Button_CancelTicket" layoutX="592.0" layoutY="417.0" mnemonicParsing="false" style="-fx-background-color: #0598FF;" text="Cancel the Ticket" textFill="WHITE" />
+      <Button fx:id="Button_CancelTicket" layoutX="592.0" layoutY="417.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #0598FF;" text="Cancel the Ticket" textFill="WHITE" />
       <Button fx:id="Button_BackToHome" layoutX="224.0" layoutY="417.0" mnemonicParsing="false" onAction="#goToHome" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: #0598ff;" text="Back" textFill="#f7f0f0" wrapText="true" />
       <AnchorPane prefHeight="70.0" prefWidth="850.0" style="-fx-background-color: #0598ff;">
          <children>

@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class Main extends Application {
 
@@ -74,13 +75,14 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketbooking.fxml"));
         Scene scene = new Scene(loader.load());
 
-        // Set the controller for the registration page
+        // Set the controller for the booking page
         TicketBookingController ticketBookingController = loader.getController();
         ticketBookingController.setMainApp(this);
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Booking Page");
     }
+
 
     public void showCancelPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bookingcancel.fxml"));

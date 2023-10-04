@@ -92,8 +92,11 @@ public class BookingCancelController implements Initializable {
                 tf_price.setText(bookingData.getPrice());
                 tf_leave.setText(bookingData.getLeave());
                 tf_destination.setText(bookingData.getDestination());
+                tf_date.setText(bookingData.getBookingdate());
 
-                label_msg.setText("Data retrieved successfully.");
+//                label_msg.setText("Data retrieved successfully.");
+            } else if (ticketid.isEmpty()) {
+                label_msg.setText("Enter Ticket Id");
             } else {
                 label_msg.setText("Ticket ID not found.");
             }
@@ -103,7 +106,7 @@ public class BookingCancelController implements Initializable {
     private BookingData retrieveBookingData(String booking_id) {
         // Implement database query to retrieve booking data based on ticket ID
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT flight_id, user_id, `leave`, destination, price FROM Booking WHERE booking_id = ?")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT flight_id, user_id, `leave`, destination, price,booking_datetime FROM Booking WHERE booking_id = ?")) {
             stmt.setString(1, booking_id);
             ResultSet resultSet = stmt.executeQuery();
 
@@ -113,15 +116,50 @@ public class BookingCancelController implements Initializable {
                 String leave = resultSet.getString("leave");
                 String destination = resultSet.getString("destination");
                 String price = resultSet.getString("price");
+                String bookingdate = resultSet.getString("booking_datetime");
+
 
                 // Create a BookingData object to store the retrieved data
-                return new BookingData(flightId, userId, leave, destination, price);
+                return new BookingData(flightId, userId, leave, destination, price,bookingdate);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return null;
+    }
+
+
+    public void delete() {
+        String ticket_id =tf_ticketid.getText();
+//        String flightid = tf_flightid.getText();
+//        String leave = tf_leave.getText();
+//        String username = tf_username.getText();
+//        String destination = tf_destination.getText();
+//        String price = tf_price.getText();
+
+
+        if (deleteticket(ticket_id)){
+            label_msg.setText("Ticket Cancellation Successful!");
+        } else {
+            label_msg.setText("Ticket Cancellation Fail! Contact To Tech Member!");
+        }
+    }
+
+
+    private boolean deleteticket(String ticket_id) {
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("delete from booking WHERE booking_id = ?")) {
+
+            // Update the user's profile based on their username
+            stmt.setString(1, ticket_id);
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
