@@ -83,8 +83,17 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("C:\\Users\\hassa\\IdeaProjects\\Flight\\src\\main\\java\\Images\\HomePageImage.jpg")));
-//        Image_Home.setImage(image);
+        Image image = new Image(Objects.requireNonNull(getClass().getResource("/Images/HomePageImage.jpg")).toString());
+        Image_Home.setImage(image);
+
+        Image image1 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
+        Menu.setImage(image1);
+
+        Image image2 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
+        MenuBack.setImage(image2);
+
+
+
 
 
         leavechoicebox.getItems().addAll(leavecity);

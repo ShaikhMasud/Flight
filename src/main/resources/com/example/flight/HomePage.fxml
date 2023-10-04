@@ -54,10 +54,13 @@
             </MenuButton>
             <ImageView fx:id="Menu" fitHeight="25.0" fitWidth="31.0" layoutX="22.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../java/com/example/flight/Images/Menu.jpg" />
+                  <Image url="@../../../Images/Menu.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="MenuBack" fitHeight="25.0" fitWidth="31.0" layoutX="22.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="MenuBack" fitHeight="25.0" fitWidth="31.0" layoutX="22.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/Menu.jpg" />
+               </image></ImageView>
             <FontAwesomeIconView fill="#f8f7f7" glyphName="USER" layoutX="902.0" layoutY="38.0" selectionFill="#0494f4" size="30" />
                 </children>
             </AnchorPane>
@@ -65,7 +68,7 @@
          <children>
             <ImageView fx:id="Image_Home" fitHeight="471.0" fitWidth="600.0" layoutX="-1.0" layoutY="2.0">
                <image>
-                  <Image url="@../../../../java/Images/HomePageImage.jpg" />
+                  <Image url="@../../../Images/HomePageImage.jpg" />
                </image>
             </ImageView>
             <ChoiceBox fx:id="leavechoicebox" layoutX="632.0" layoutY="128.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
