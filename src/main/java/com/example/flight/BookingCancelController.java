@@ -38,6 +38,9 @@ public class BookingCancelController implements Initializable {
     private Label UserName;
 
     @FXML
+    private Label label_flight;
+
+    @FXML
     private VBox slider;
 
     @FXML
@@ -73,6 +76,12 @@ public class BookingCancelController implements Initializable {
     private Main mainApp;
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
+    }
+
+    private String loggedInUserId;
+
+    public void setLoggedInUserId(String userId) {
+        loggedInUserId = userId;
     }
 
     @FXML
@@ -268,6 +277,22 @@ public class BookingCancelController implements Initializable {
             HomeController homeController = loader.getController();
             homeController.setMainApp(mainApp);
             mainApp.showCancelPage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Stage stage = (Stage) label_flight.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            BookingCancelController bookingCancelController = loader.getController();
+            bookingCancelController.setMainApp(mainApp);
+            mainApp.showLogin();
         } catch (IOException e) {
             e.printStackTrace();
         }

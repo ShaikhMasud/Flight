@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -11,11 +12,12 @@
     <children>
         <AnchorPane prefHeight="82.0" prefWidth="520.0" style="-fx-background-color: #0598ff;">
             <children>
-                <Label fx:id="L_UserRegisteration" layoutX="92.0" layoutY="30.0" text="User Registeration" textFill="#f2eeee">
+                <Label fx:id="L_UserRegisteration" layoutX="200.0" layoutY="27.0" text="User Sign Up" textFill="#f2eeee">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
+            <FontAwesomeIconView fill="#f8f7f7" glyphName="PLANE" layoutX="157.0" layoutY="55.0" selectionFill="#0494f4" size="40" />
             </children>
         </AnchorPane>
         <TextField fx:id="tf_firstname" layoutX="73.0" layoutY="117.0" prefHeight="24.0" prefWidth="369.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />

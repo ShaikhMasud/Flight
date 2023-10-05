@@ -120,6 +120,18 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Forgot Password Page");
     }
+
+    public void showPayment() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
+        Scene scene = new Scene(loader.load());
+
+        // Set the controller for the registration page
+        PaymentController paymentController = loader.getController();
+        paymentController.setMainApp(this);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Payment");
+    }
 }
 
 

@@ -53,6 +53,9 @@ public class LoginController {
     private Scene scene;
     private Parent root;
 
+    private String loggedInUserId;
+
+
     private Main mainApp;
 
     public void setMainApp(Main mainApp) {
@@ -84,20 +87,25 @@ public class LoginController {
             label_loginmessage.setText("Invalid credentials.");
         }
     }
-
     private boolean validateLogin(String username, String password) {
-        // Implement database validation here
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?")) {
             stmt.setString(1, username);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
-            return rs.next();
+
+            if (rs.next()) {
+                // Store the logged-in user's ID
+                loggedInUserId = rs.getString("user_id");
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+
+        return false;
     }
+
 
 
     @FXML
@@ -117,9 +125,25 @@ public class LoginController {
         }
     }
 
+//    @FXML
+//    private void gotoHome(){
+//        try{
+//            String username = tf_username.getText();
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+//            Stage stage = (Stage) tf_username.getScene().getWindow();
+//            stage.getScene().setRoot(loader.load());
+//
+//            HomeController homeController = loader.getController();
+//            homeController.setMainApp(mainApp);
+//            mainApp.showHome();
+//        }catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     @FXML
-    private void gotoHome(){
-        try{
+    private void gotoHome() {
+        try {
             String username = tf_username.getText();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Stage stage = (Stage) tf_username.getScene().getWindow();
@@ -127,11 +151,17 @@ public class LoginController {
 
             HomeController homeController = loader.getController();
             homeController.setMainApp(mainApp);
+
+            // Pass the logged-in user's ID to the home controller
+            homeController.displayname(username);
+            homeController.setLoggedInUserId(loggedInUserId); // Set the logged-in user's ID
+
             mainApp.showHome();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     private void gotoforgotpassword(){

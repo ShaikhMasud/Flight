@@ -51,7 +51,7 @@ public class UpdateProfileController implements Initializable {
     private Label label_flightbooking;
 
     @FXML
-    private Label tf_Home;
+    private Button Button_Home;
 
     @FXML
     private TextField tf_username;
@@ -72,6 +72,12 @@ public class UpdateProfileController implements Initializable {
 
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
+    }
+
+    private String loggedInUserId;
+
+    public void setLoggedInUserId(String userId) {
+        loggedInUserId = userId;
     }
 
     public void update() {
@@ -165,12 +171,12 @@ public class UpdateProfileController implements Initializable {
         try {
             // Load the registration.fxml file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketbooking.fxml"));
-            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            Stage stage = (Stage) Button_Home.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 
             // Set the controller for the registration page
-            HomeController homeController = loader.getController();
-            homeController.setMainApp(mainApp);
+            UpdateProfileController updateProfileController = loader.getController();
+            updateProfileController.setMainApp(mainApp);
             mainApp.showBookingPage();
         } catch (IOException e) {
             e.printStackTrace();
@@ -182,12 +188,12 @@ public class UpdateProfileController implements Initializable {
         try {
             // Load the registration.fxml file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("bookingcancel.fxml"));
-            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            Stage stage = (Stage) Button_Home.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 
             // Set the controller for the registration page
-            HomeController homeController = loader.getController();
-            homeController.setMainApp(mainApp);
+            UpdateProfileController updateProfileController = loader.getController();
+            updateProfileController.setMainApp(mainApp);
             mainApp.showCancelPage();
         } catch (IOException e) {
             e.printStackTrace();
@@ -198,14 +204,44 @@ public class UpdateProfileController implements Initializable {
     private void goToUpdatePage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("updateprofile.fxml"));
-            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            Stage stage = (Stage) Button_Home.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 
             // Set the controller for the registration page
-            HomeController homeController = loader.getController();
-            homeController.setMainApp(mainApp);
+            UpdateProfileController updateProfileController = loader.getController();
+            updateProfileController.setMainApp(mainApp);
             mainApp.showUpdatePage();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Stage stage = (Stage) Button_Home.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            UpdateProfileController updateProfileController = loader.getController();
+            updateProfileController.setMainApp(mainApp);
+            mainApp.showLogin();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void goToHome(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+            Stage stage = (Stage) Button_Home.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            UpdateProfileController updateProfileController = loader.getController();
+            updateProfileController.setMainApp(mainApp);
+            mainApp.showHome();
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -39,22 +39,18 @@ public class RegistrationController {
         String firstname = tf_firstname.getText();
         String lastname = tf_lastname.getText();
         String username = tf_username.getText();
-//        int contact = Integer.parseInt(tf_contact.getText());
-        long contact = Long.parseLong(tf_contact.getText());
-
+        String contactText = tf_contact.getText();
         String password = pf_password.getText();
         String confirmPassword = pf_comfirm.getText();
 
-
-        if (username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || tf_contact.getText().isEmpty() || confirmPassword.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || contactText.isEmpty() || confirmPassword.isEmpty()) {
             label_message.setText("Enter Your Details.");
-        }
-        else if (!isNumeric(tf_contact.getText())) {
+        } else if (!isNumeric(contactText)) {
             label_message.setText("Contact should only contain numbers.");
-        }else if (!isAlpha(firstname) || !isAlpha(lastname)) {
+        } else if (!isAlpha(firstname) || !isAlpha(lastname)) {
             label_message.setText("First name and last name should contain only alphabetical characters.");
-        }
-        else {
+        } else {
+            long contact = Long.parseLong(contactText);
 
             if (usernameExists(username)) {
                 label_message.setText("User already exists.");
@@ -67,6 +63,7 @@ public class RegistrationController {
             }
         }
     }
+
 
     private boolean isAlpha(String value) {
         // Use a regular expression to check if the string contains only alphabetical characters

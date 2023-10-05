@@ -14,21 +14,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.UpdateProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.UpdateProfileController">
    <children>
       <AnchorPane layoutY="83.0" prefHeight="568.0" prefWidth="250.0" style="-fx-background-color: #0598ff;">
          <children>
-            <Button layoutX="62.0" layoutY="106.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="125.0" style="-fx-background-color: black;" text="Edit Profile Picture">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Text layoutX="83.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shaikh Masud" />
-            <AnchorPane layoutX="-1.0" layoutY="6.0" prefHeight="569.0" prefWidth="258.0">
+            <AnchorPane layoutX="-1.0" layoutY="6.0" prefHeight="1009.0" prefWidth="258.0">
                <children>
                   <VBox fx:id="slider" layoutY="-6.0" prefHeight="574.0" prefWidth="192.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Booking a Flight" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#GoToBookingPage" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Book a Flight" textFill="#0598ff">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -38,22 +32,22 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Profile Update" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#goToUpdatePage" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Update Profile" textFill="#0598ff">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Contact US" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#GoToBookingCancelPage" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Ticket Cancel" textFill="#0598ff">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="FAQ's" textFill="#0598ff">
+                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Contact Us" textFill="#0598ff">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Logout" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#goToLogin" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Logout" textFill="#0598ff">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -64,45 +58,45 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Text fx:id="label_username" fill="#0598ff" layoutX="405.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FirstName">
+      <Text fx:id="label_username" fill="#0598ff" layoutX="625.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FirstName">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text fx:id="label_firstname" fill="#0598ff" layoutX="406.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+      <Text fx:id="label_firstname" fill="#0598ff" layoutX="626.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text fx:id="label_lastname" fill="#0598ff" layoutX="407.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName">
+      <Text fx:id="label_lastname" fill="#0598ff" layoutX="627.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text fx:id="label_contact" fill="#0598ff" layoutX="407.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number:">
+      <Text fx:id="label_contact" fill="#0598ff" layoutX="627.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number:">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text fx:id="label_password" fill="#0598ff" layoutX="409.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+      <Text fx:id="label_password" fill="#0598ff" layoutX="629.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text fill="#0598ff" layoutX="407.0" layoutY="526.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:">
+      <Text fill="#0598ff" layoutX="627.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Button fx:id="Button_Update" layoutX="616.0" layoutY="572.0" mnemonicParsing="false" onAction="#update" style="-fx-background-radius: 30;" text="Save Change" />
-      <TextField fx:id="pf_password" layoutX="577.0" layoutY="441.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <Text fill="#0598ff" layoutX="406.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth:">
+      <Button fx:id="Button_Update" layoutX="836.0" layoutY="576.0" mnemonicParsing="false" onAction="#update" style="-fx-background-radius: 30;" text="Save Change" />
+      <TextField fx:id="pf_password" layoutX="797.0" layoutY="445.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <Text fill="#0598ff" layoutX="626.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth:">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <DatePicker layoutX="576.0" layoutY="375.0" prefHeight="27.0" prefWidth="179.0" promptText="DOB" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField layoutX="577.0" layoutY="507.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField layoutX="576.0" layoutY="313.0" promptText="Contact No." style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_username" layoutX="577.0" layoutY="255.0" promptText="Masud" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_lastname" layoutX="576.0" layoutY="195.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_firstname" layoutX="576.0" layoutY="131.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <DatePicker layoutX="796.0" layoutY="379.0" prefHeight="27.0" prefWidth="179.0" promptText="DOB" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField layoutX="797.0" layoutY="511.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField layoutX="796.0" layoutY="317.0" promptText="Contact No." style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="tf_username" layoutX="797.0" layoutY="259.0" promptText="Masud" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="tf_lastname" layoutX="796.0" layoutY="199.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="tf_firstname" layoutX="796.0" layoutY="135.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <AnchorPane prefHeight="82.0" prefWidth="1000.0">
          <children>
-            <AnchorPane prefHeight="82.0" prefWidth="1000.0" style="-fx-background-color: #0598ff;">
+            <AnchorPane prefHeight="82.0" prefWidth="1550.0" style="-fx-background-color: #0598ff;">
                <children>
                   <FontAwesomeIconView fill="#f8f7f7" glyphName="PLANE" layoutX="58.0" layoutY="55.0" selectionFill="#0494f4" size="40" />
                   <Label layoutX="108.0" layoutY="27.0" text="Flight" textFill="#fafcfc">
@@ -110,18 +104,17 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tf_Home" layoutX="177.0" layoutY="34.0" text="Home" textFill="#f0f4f7" />
                   <Label fx:id="UserName" layoutX="894.0" layoutY="33.0" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" textFill="#edf1f4">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="826.0" layoutY="21.0" prefHeight="40.0" prefWidth="51.0" text="Info" textAlignment="CENTER" textFill="#f4f7fa">
+                  <Label layoutX="1445.0" layoutY="25.0" prefHeight="40.0" prefWidth="51.0" text="Info" textAlignment="CENTER" textFill="#f4f7fa">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <MenuButton fx:id="BookingPage" layoutX="673.0" layoutY="27.0" mnemonicParsing="false" onAction="#GoToBookingPage" style="-fx-background-color: #0598ff;" text="Book" textFill="#fcf8f8">
+                  <MenuButton fx:id="BookingPage" layoutX="1292.0" layoutY="31.0" mnemonicParsing="false" onAction="#GoToBookingPage" style="-fx-background-color: #0598ff;" text="Book" textFill="#fcf8f8">
                      <items>
                         <MenuItem fx:id="MB_Action1" mnemonicParsing="false" onAction="#GoToBookingPage" text="Flights" />
                         <MenuItem fx:id="MB_Action2" mnemonicParsing="false" text="Action 2" />
@@ -130,7 +123,7 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <MenuButton layoutX="737.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #0598ff;" text="Manage" textFill="#f4f3f3">
+                  <MenuButton layoutX="1356.0" layoutY="31.0" mnemonicParsing="false" style="-fx-background-color: #0598ff;" text="Manage" textFill="#f4f3f3">
                      <items>
                         <MenuItem fx:id="MB_TicketCancel" mnemonicParsing="false" onAction="#GoToBookingCancelPage" text="Ticket Cancel" />
                         <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -149,12 +142,13 @@
                         <Image url="@../../../Images/Menu.jpg" />
                      </image>
                   </ImageView>
-                  <FontAwesomeIconView fill="#f8f7f7" glyphName="USER" layoutX="902.0" layoutY="38.0" selectionFill="#0494f4" size="30" />
-                  <Label fx:id="label_flightbooking" layoutX="424.0" layoutY="25.0" prefHeight="35.0" prefWidth="151.0" text="Profile Details" textFill="#efeeee">
+                  <FontAwesomeIconView fill="#f8f7f7" glyphName="USER" layoutX="1514.0" layoutY="43.0" selectionFill="#0494f4" size="30" />
+                  <Label fx:id="label_flightbooking" layoutX="724.0" layoutY="23.0" prefHeight="35.0" prefWidth="151.0" text="Profile Details" textFill="#efeeee">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <Button fx:id="Button_Home" layoutX="153.0" layoutY="28.0" mnemonicParsing="false" onAction="#goToHome" prefHeight="30.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="Home" textFill="#0598ff" />
                </children>
             </AnchorPane>
          </children>

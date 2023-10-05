@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.HomeController">
+<AnchorPane prefHeight="1100.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.HomeController">
         <children>
-            <AnchorPane prefHeight="82.0" prefWidth="1000.0" style="-fx-background-color: #0598ff;">
+            <AnchorPane prefHeight="82.0" prefWidth="1550.0" style="-fx-background-color: #0598ff;">
                 <children>
                     <FontAwesomeIconView fill="#f8f7f7" glyphName="PLANE" layoutX="58.0" layoutY="55.0" selectionFill="#0494f4" size="40" />
                     <Label layoutX="108.0" layoutY="27.0" text="Flight" textFill="#fafcfc">
@@ -24,17 +24,17 @@
                         </font>
                     </Label>
                     <Label fx:id="tf_Home" layoutX="177.0" layoutY="34.0" text="Home" textFill="#f0f4f7" />
-                    <Label fx:id="usernamecopy" alignment="CENTER" layoutX="867.0" layoutY="41.0" prefHeight="30.0" prefWidth="92.0" textFill="#edf1f4">
+                    <Label fx:id="usernamecopy" alignment="CENTER" layoutX="1437.0" layoutY="41.0" prefHeight="30.0" prefWidth="92.0" textFill="#edf1f4">
                         <font>
                             <Font size="15.0" />
                         </font>
                     </Label>
-                    <Label layoutX="826.0" layoutY="21.0" prefHeight="40.0" prefWidth="51.0" text="Info" textAlignment="CENTER" textFill="#f4f7fa">
+                    <Label layoutX="1382.0" layoutY="21.0" prefHeight="40.0" prefWidth="51.0" text="Info" textAlignment="CENTER" textFill="#f4f7fa">
                         <font>
                             <Font size="14.0" />
                         </font>
                     </Label>
-            <MenuButton fx:id="BookingPage" layoutX="673.0" layoutY="27.0" mnemonicParsing="false" onAction="#GoToBookingPage" style="-fx-background-color: #0598ff;" text="Book" textFill="#fcf8f8">
+            <MenuButton fx:id="BookingPage" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#GoToBookingPage" style="-fx-background-color: #0598ff;" text="Book" textFill="#fcf8f8">
               <items>
                 <MenuItem fx:id="MB_Action1" mnemonicParsing="false" onAction="#GoToBookingPage" text="Flights" />
                 <MenuItem fx:id="MB_Action2" mnemonicParsing="false" text="Action 2" />
@@ -43,7 +43,7 @@
                   <Font size="14.0" />
                </font>
             </MenuButton>
-            <MenuButton layoutX="737.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #0598ff;" text="Manage" textFill="#f4f3f3">
+            <MenuButton layoutX="1293.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #0598ff;" text="Manage" textFill="#f4f3f3">
               <items>
                 <MenuItem fx:id="MB_TicketCancel" mnemonicParsing="false" onAction="#GoToBookingCancelPage" text="Ticket Cancel" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -61,22 +61,22 @@
                <image>
                   <Image url="@../../../Images/Menu.jpg" />
                </image></ImageView>
-            <FontAwesomeIconView fill="#f8f7f7" glyphName="USER" layoutX="902.0" layoutY="38.0" selectionFill="#0494f4" size="30" />
+            <FontAwesomeIconView fill="#f8f7f7" glyphName="USER" layoutX="1472.0" layoutY="38.0" selectionFill="#0494f4" size="30" />
                 </children>
             </AnchorPane>
-      <AnchorPane layoutY="82.0" prefHeight="471.0" prefWidth="955.0" style="-fx-background-color: #f1f5f7;">
+      <AnchorPane layoutY="82.0" prefHeight="1018.0" prefWidth="1550.0" style="-fx-background-color: #f1f5f7;">
          <children>
-            <ImageView fx:id="Image_Home" fitHeight="471.0" fitWidth="600.0" layoutX="-1.0" layoutY="2.0">
+            <ImageView fx:id="Image_Home" fitHeight="696.0" fitWidth="826.0" layoutX="-1.0">
                <image>
                   <Image url="@../../../Images/HomePageImage.jpg" />
                </image>
             </ImageView>
-            <ChoiceBox fx:id="leavechoicebox" layoutX="632.0" layoutY="128.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
-            <Label layoutX="632.0" layoutY="97.0" text="LEAVING FROM" textFill="#0598ff" />
-            <Label layoutX="797.0" layoutY="97.0" text="DESTINATION AT" textFill="#0598ff" />
-            <ChoiceBox fx:id="destinationchoicebox" layoutX="797.0" layoutY="128.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
-            <DatePicker fx:id="datebox" layoutX="632.0" layoutY="239.0" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="Button_Search" layoutX="632.0" layoutY="316.0" mnemonicParsing="false" onAction="#Search" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: #2d8dc9;" text="Search" textFill="#f8f6f6" />
+            <ChoiceBox fx:id="leavechoicebox" layoutX="1050.0" layoutY="165.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
+            <Label layoutX="1050.0" layoutY="134.0" text="LEAVING FROM" textFill="#0598ff" />
+            <Label layoutX="1215.0" layoutY="134.0" text="DESTINATION AT" textFill="#0598ff" />
+            <ChoiceBox fx:id="destinationchoicebox" layoutX="1215.0" layoutY="165.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
+            <DatePicker fx:id="datebox" layoutX="1050.0" layoutY="276.0" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="Button_Search" layoutX="1050.0" layoutY="353.0" mnemonicParsing="false" onAction="#Search" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: #2d8dc9;" text="Search" textFill="#f8f6f6" />
             <AnchorPane layoutX="-1.0" prefHeight="474.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox fx:id="slider" prefHeight="471.0" prefWidth="200.0">
@@ -106,7 +106,7 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Logout" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#goToLogin" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Logout" textFill="#0598ff">
                            <font>
                               <Font size="14.0" />
                            </font>

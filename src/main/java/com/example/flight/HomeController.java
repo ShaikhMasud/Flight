@@ -80,6 +80,12 @@ public class HomeController implements Initializable {
         this.mainApp = mainApp;
     }
 
+    private String loggedInUserId;
+
+    public void setLoggedInUserId(String userId) {
+        loggedInUserId = userId;
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -155,6 +161,8 @@ public class HomeController implements Initializable {
 
             // Set the controller for the registration page
             HomeController homeController = loader.getController();
+            homeController.setLoggedInUserId(loggedInUserId);
+
             homeController.setMainApp(mainApp);
             mainApp.showBookingPage();
         } catch (IOException e) {
@@ -172,6 +180,7 @@ public class HomeController implements Initializable {
 
             // Set the controller for the registration page
             HomeController homeController = loader.getController();
+            homeController.setLoggedInUserId(loggedInUserId);
             homeController.setMainApp(mainApp);
             mainApp.showCancelPage();
         } catch (IOException e) {
@@ -188,6 +197,8 @@ public class HomeController implements Initializable {
 
             // Set the controller for the registration page
             HomeController homeController = loader.getController();
+            homeController.setLoggedInUserId(loggedInUserId);
+
             homeController.setMainApp(mainApp);
             mainApp.showUpdatePage();
         } catch (IOException e) {
@@ -195,6 +206,21 @@ public class HomeController implements Initializable {
         }
     }
 
+    @FXML
+    private void goToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            HomeController homeController = loader.getController();
+            homeController.setMainApp(mainApp);
+            mainApp.showLogin();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void Search(ActionEvent event) throws IOException {

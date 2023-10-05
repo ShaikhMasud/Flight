@@ -16,7 +16,7 @@
       <TextField fx:id="tf_CardName" layoutX="490.0" layoutY="285.0" prefHeight="36.0" prefWidth="422.0" promptText="Card Holder's Name" />
       <DatePicker fx:id="ExpiryDate" layoutX="490.0" layoutY="341.0" promptText="Expiry Date" />
       <TextField fx:id="tf_cvvcode" layoutX="760.0" layoutY="341.0" promptText="CVV Code" />
-      <Button layoutX="818.0" layoutY="430.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #0598ff; -fx-border-radius: 2px 2px 2px 2px;" text="Book" textFill="#f2eded" />
+      <Button layoutX="818.0" layoutY="430.0" mnemonicParsing="false" onAction="#PaymentDone" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #0598ff; -fx-border-radius: 2px 2px 2px 2px;" text="Book" textFill="#f2eded" />
       <Button fx:id="BackToBookingPage" layoutX="484.0" layoutY="433.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #808080;" text="Back" />
       <AnchorPane layoutY="-6.0" prefHeight="82.0" prefWidth="1000.0" style="-fx-background-color: #0598ff;">
          <children>
@@ -68,5 +68,6 @@
          </font>
       </Text>
       <Label fx:id="PaymentDone_label" alignment="CENTER" layoutX="490.0" layoutY="394.0" prefHeight="18.0" prefWidth="175.0" />
+      <TextField fx:id="tf_ticketid" layoutX="341.0" layoutY="120.0" promptText="Ticket ID" />
    </children>
 </AnchorPane>
