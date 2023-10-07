@@ -123,6 +123,9 @@ public class TicketBookingController implements Initializable {
     private Label usernamecopy;
 
     @FXML
+    private Label label_msg;
+
+    @FXML
     private Button PaymentButton;
 
 
@@ -162,19 +165,28 @@ public class TicketBookingController implements Initializable {
 
 
 
-    private void initializeImages() {
-        Image image1 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
-        Menu.setImage(image1);
-
-        Image image2 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
-        MenuBack.setImage(image2);
-    }
+//    private void initializeImages() {
+//        Image image1 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
+//        Menu.setImage(image1);
+//
+//        Image image2 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
+//        MenuBack.setImage(image2);
+//    }
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeImages();
+
+        tf_leaveSearch.setDisable(true);
+        tf_destinationSearch.setDisable(true);
+
+        Image image1 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
+        Menu.setImage(image1);
+
+        Image image2 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
+        MenuBack.setImage(image2);
+
         int randomTicketID = generateRandomTicketID();
         tf_ticketid.setText(String.valueOf(randomTicketID));
         // ... Rest of your code for database and table initialization
@@ -215,7 +227,13 @@ public class TicketBookingController implements Initializable {
                 Time querydeparture_time= queryOutput.getTime("departure_time");
                 Integer queryprice= queryOutput.getInt("price");
 
-                if (!queryleave.equalsIgnoreCase(querydestination)) {
+//                if(tf_leaveSearch.getText().equals(tf_destinationSearch.getText())){
+//                    label_msg.setText("Same Value");
+//                }
+
+                if (!tf_leaveSearch.getText().equals(tf_destinationSearch.getText())) {
+                    label_msg.setText("Same Value");
+                }else {
                     flightSearchObservableList.add(new FlightSearch(queryflight_id, queryflight_name, queryleave, querydestination, querydate, queryarrival_time, querydeparture_time, queryprice));
                 }
 
@@ -276,6 +294,7 @@ public class TicketBookingController implements Initializable {
                     }
                 });
             });
+
 
             DatePicker_Search.valueProperty().addListener((observable, oldValue, newValue) -> {
                 filtereddata.setPredicate(flightSearch -> {
@@ -498,12 +517,15 @@ public class TicketBookingController implements Initializable {
     private Parent root;
 
     @FXML
-    private void BookButton(ActionEvent event) {
+    private void BookButton(ActionEvent event) throws IOException {
         try {
+            String ticketid = tf_ticketid.getText();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
-            root = loader.load();
-//            Stage stage = (Stage) tf_Home.getScene().getWindow();
-//            Scene scene = new Scene(loader.load());
+            Parent root = loader.load();
+            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Get a reference to the PaymentController instance created by the FXMLLoader
             PaymentController paymentController = loader.getController();
 
             // Pass the selected flight details to PaymentController
@@ -513,28 +535,26 @@ public class TicketBookingController implements Initializable {
             }
 
             // Pass the logged-in user ID to PaymentController
-            paymentController.setLoggedInUserId(loggedInUserId);
+            paymentController.displayticketid(ticketid);
+            PaymentController.setLoggedInUserId(loggedInUserId);
 
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            gotoPayment();
-
-            stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+
     // Insert booking details into the MySQL database
     public void insertBookingDetails(FlightSearch flightDetails) {
+
         try {
             DatabaseConnection connectNow = new DatabaseConnection();
-            Connection connectDB = connectNow.getConnection();
+            Connection connectDB = DatabaseConnection.getConnection();
 
             // Define the SQL query to insert booking details
-            String insertQuery = "INSERT INTO booking (ticket_id,user_id, flight_id,flight_name,leave, destination, date, arrival_time,destination_time,price,booking_datetime) " +
+            String insertQuery = "INSERT INTO booking (ticket_id,user_id, flight_id,flight_name,`leave`, destination, date, arrival_time,departure_time,price,booking_datetime) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
 
             // Create a PreparedStatement
@@ -555,8 +575,10 @@ public class TicketBookingController implements Initializable {
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
 // Set the parameter values
-            preparedStatement.setInt(1, Integer.parseInt(tf_ticketid.getText())); // Assuming tf_ticketid is the ticket ID
-            preparedStatement.setInt(2, Integer.parseInt(loggedInUserId)); // Assuming loggedInUserId is a user ID
+//            preparedStatement.setInt(1, Integer.parseInt(tf_ticketid.getText())); // Assuming tf_ticketid is the ticket ID
+            preparedStatement.setInt(1, flightDetails.getticket_id); // Assuming tf_ticketid is the ticket ID
+
+            preparedStatement.setString(2, UserSession.getLoggedInUserId()); // Assuming loggedInUserId is a user ID
             preparedStatement.setInt(3, flightDetails.getFlight_id());
             preparedStatement.setString(4, flightDetails.getFlight_name());
             preparedStatement.setString(5, flightDetails.getLeave());
@@ -585,7 +607,7 @@ public class TicketBookingController implements Initializable {
     @FXML
     private void gotoPayment() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
             Stage stage = (Stage) tf_Home.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 

@@ -70,6 +70,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <Label fx:id="label_msg" alignment="CENTER" layoutX="1438.0" layoutY="47.0" prefHeight="18.0" prefWidth="110.0" />
          </children>
       </AnchorPane>
       <TableView fx:id="flighttableview" layoutX="57.0" layoutY="191.0" onMouseClicked="#getDetails" prefHeight="450.0" prefWidth="686.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 2px 2px 2px 2px;">
@@ -88,19 +89,19 @@
       <Label layoutX="307.0" layoutY="109.0" text="Destination :" textFill="#0598ff" />
       <Label layoutX="534.0" layoutY="109.0" text="Date :" textFill="#0598ff" />
       <DatePicker fx:id="DatePicker_Search" layoutX="567.0" layoutY="106.0" prefHeight="26.0" prefWidth="129.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <Label layoutX="1186.0" layoutY="106.0" prefHeight="27.0" prefWidth="169.0" text="Ticket Booking Form" textFill="#0598ff">
+      <Label layoutX="1186.0" layoutY="106.0" prefHeight="27.0" prefWidth="169.0" text="Ticket Booking Form" textFill="#01101b">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="1108.0" layoutY="216.0" prefHeight="20.0" prefWidth="63.0" text="Flight ID :" textFill="#0598ff">
+      <Label layoutX="1108.0" layoutY="216.0" prefHeight="20.0" prefWidth="63.0" text="Flight ID :" textFill="#01101b">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="tf_flightid" layoutX="1244.0" layoutY="203.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button fx:id="Button_BackToHome" layoutX="1108.0" layoutY="640.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-background-color: #0598ff; -fx-border-radius: 4;" text="Back" />
-      <Button fx:id="Button_Book" layoutX="1244.0" layoutY="640.0" mnemonicParsing="false" onAction="#BookButton" style="-fx-background-color: #0598ff; -fx-border-color: black; -fx-border-radius: 4;" text="Book" textFill="#f7f2f2" />
+      <Button fx:id="Button_BackToHome" layoutX="1108.0" layoutY="640.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-background-color: #0598ff; -fx-border-radius: 4;" text="Back" textFill="#00080d" />
+      <Button fx:id="Button_Book" layoutX="1244.0" layoutY="640.0" mnemonicParsing="false" onAction="#BookButton" style="-fx-background-color: #0598ff; -fx-border-color: black; -fx-border-radius: 4;" text="Book" textFill="#00080d" />
       <AnchorPane layoutY="82.0" prefHeight="379.0" prefWidth="200.0">
          <children>
             <VBox fx:id="slider" prefHeight="361.0" prefWidth="200.0">
@@ -141,53 +142,54 @@
       </AnchorPane>
       <TextField fx:id="tf_leaveSearch" layoutX="157.0" layoutY="108.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="tf_destinationSearch" layoutX="388.0" layoutY="105.0" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <Label layoutX="1108.0" layoutY="322.0" prefHeight="20.0" prefWidth="63.0" text="Leave :" textFill="#0598ff">
+      <Label layoutX="1108.0" layoutY="322.0" prefHeight="20.0" prefWidth="63.0" text="Leave :" textFill="#01101b">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="tf_leave" layoutX="1244.0" layoutY="306.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Label layoutX="1108.0" layoutY="269.0" prefHeight="20.0" prefWidth="88.0" text="Flight Name :" textFill="#0598ff">
+      <Label layoutX="1108.0" layoutY="269.0" prefHeight="20.0" prefWidth="88.0" text="Flight Name :" textFill="#01101b">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="tf_flightName" layoutX="1244.0" layoutY="252.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Label layoutX="1108.0" layoutY="371.0" prefHeight="20.0" prefWidth="88.0" text="Destination :" textFill="#0598ff">
+      <Label layoutX="1108.0" layoutY="371.0" prefHeight="20.0" prefWidth="88.0" text="Destination :" textFill="#01101b">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="tf_Destination" layoutX="1244.0" layoutY="358.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Label layoutX="1108.0" layoutY="471.0" prefHeight="20.0" prefWidth="88.0" text="Arrival Times :" textFill="#0598ff">
+      <Label layoutX="1108.0" layoutY="471.0" prefHeight="20.0" prefWidth="88.0" text="Arrival Times :" textFill="#01101b">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="tf_ArrivalTime" layoutX="1244.0" layoutY="455.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Label layoutX="1108.0" layoutY="420.0" prefHeight="20.0" prefWidth="63.0" text="Date :" textFill="#0598ff">
+      <Label layoutX="1108.0" layoutY="420.0" prefHeight="20.0" prefWidth="63.0" text="Date :" textFill="#01101b">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="tf_Date" layoutX="1244.0" layoutY="403.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Label layoutX="1108.0" layoutY="527.0" prefHeight="20.0" prefWidth="110.0" text="Departure Times :" textFill="#0598ff">
+      <Label layoutX="1108.0" layoutY="527.0" prefHeight="20.0" prefWidth="110.0" text="Departure Times :" textFill="#01101b">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="tf_DepartureTime" layoutX="1244.0" layoutY="514.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Label layoutX="1108.0" layoutY="585.0" prefHeight="20.0" prefWidth="42.0" text="Price :" textFill="#0598ff">
+      <Label layoutX="1108.0" layoutY="585.0" prefHeight="20.0" prefWidth="42.0" text="Price :" textFill="#01101b">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="tf_Price" layoutX="1244.0" layoutY="568.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Label layoutX="1108.0" layoutY="168.0" prefHeight="20.0" prefWidth="63.0" text="Ticket ID :" textFill="#0598ff">
+      <Label layoutX="1108.0" layoutY="168.0" prefHeight="20.0" prefWidth="63.0" text="Ticket ID :" textFill="#01101b">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <TextField fx:id="tf_ticketid" layoutX="1244.0" layoutY="155.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
+      <Label fx:id="label_msg" alignment="CENTER" layoutX="274.0" layoutY="147.0" prefHeight="18.0" prefWidth="130.0" />
    </children>
 </AnchorPane>

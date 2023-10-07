@@ -5,6 +5,8 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -25,13 +27,23 @@
                   <Font size="28.0" />
                </font>
             </Text>
-            <FontAwesomeIconView fill="#f8f7f7" glyphName="PLANE" layoutX="26.0" layoutY="54.0" selectionFill="#0494f4" size="40" />
-            <Label layoutX="77.0" layoutY="27.0" text="Flight" textFill="#fafcfc">
+            <FontAwesomeIconView fill="#f8f7f7" glyphName="PLANE" layoutX="72.0" layoutY="54.0" selectionFill="#0494f4" size="40" />
+            <Label layoutX="123.0" layoutY="27.0" text="Flight" textFill="#fafcfc">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="tf_Home" layoutX="144.0" layoutY="32.0" text="Home" textFill="#f0f4f7" />
+            <Label fx:id="tf_Home" layoutX="190.0" layoutY="32.0" text="Home" textFill="#f0f4f7" />
+            <ImageView fx:id="Menu" fitHeight="25.0" fitWidth="31.0" layoutX="14.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/Menu.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="MenuBack" fitHeight="25.0" fitWidth="31.0" layoutX="14.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/Menu.jpg" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="96.0" layoutY="148.0" prefHeight="488.0" prefWidth="200.0">

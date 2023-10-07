@@ -6,28 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import java.io.IOException;
-
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -46,6 +24,7 @@ public class LoginController {
 
     @FXML
     private Label label_loginmessage;
+
     @FXML
     private Button button_login;
 
@@ -53,8 +32,7 @@ public class LoginController {
     private Scene scene;
     private Parent root;
 
-    private String loggedInUserId;
-
+    private String loggedInUserId; // Store the logged-in user's ID
 
     private Main mainApp;
 
@@ -68,7 +46,7 @@ public class LoginController {
 
         if (username.isEmpty() || password.isEmpty()) {
             label_loginmessage.setText("Enter Your Username And Password.");
-        }else if (validateLogin(username, password)) {
+        } else if (validateLogin(username, password)) {
             label_loginmessage.setText("Login successful!");
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
@@ -82,11 +60,11 @@ public class LoginController {
             stage.setScene(scene);
             stage.show();
             gotoHome();
-        } 
-        else {
+        } else {
             label_loginmessage.setText("Invalid credentials.");
         }
     }
+
     private boolean validateLogin(String username, String password) {
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?")) {
@@ -96,7 +74,7 @@ public class LoginController {
 
             if (rs.next()) {
                 // Store the logged-in user's ID
-                loggedInUserId = rs.getString("user_id");
+                UserSession.setLoggedInUserId(rs.getString("user_id"));
                 return true;
             }
         } catch (SQLException e) {
@@ -105,8 +83,6 @@ public class LoginController {
 
         return false;
     }
-
-
 
     @FXML
     private void goToRegistration() {
@@ -125,22 +101,6 @@ public class LoginController {
         }
     }
 
-//    @FXML
-//    private void gotoHome(){
-//        try{
-//            String username = tf_username.getText();
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-//            Stage stage = (Stage) tf_username.getScene().getWindow();
-//            stage.getScene().setRoot(loader.load());
-//
-//            HomeController homeController = loader.getController();
-//            homeController.setMainApp(mainApp);
-//            mainApp.showHome();
-//        }catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     @FXML
     private void gotoHome() {
         try {
@@ -154,7 +114,7 @@ public class LoginController {
 
             // Pass the logged-in user's ID to the home controller
             homeController.displayname(username);
-            homeController.setLoggedInUserId(loggedInUserId); // Set the logged-in user's ID
+            homeController.setLoggedInUserId(UserSession.getLoggedInUserId());
 
             mainApp.showHome();
         } catch (IOException e) {
@@ -162,10 +122,9 @@ public class LoginController {
         }
     }
 
-
     @FXML
     private void gotoforgotpassword(){
-        try{
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("forgot_password.fxml"));
             Stage stage = (Stage) tf_username.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
@@ -173,11 +132,8 @@ public class LoginController {
             ForgotPasswordController forgotPasswordController = loader.getController();
             forgotPasswordController.setMainApp(mainApp);
             mainApp.showForgotPassword();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
-
 }

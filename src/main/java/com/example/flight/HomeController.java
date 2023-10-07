@@ -25,6 +25,9 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
     @FXML
     private Label tf_Home;
+
+    @FXML
+    private Label label_msg;
     @FXML
     private ChoiceBox<String> leavechoicebox;
     private String[] leavecity = {"Mumbai", "Delhi", "Chennai", "Jaipur"};
@@ -100,7 +103,12 @@ public class HomeController implements Initializable {
         MenuBack.setImage(image2);
 
 
-
+//        String leave = leavechoicebox.getItems().toString();
+//        String destination = destinationchoicebox.getItems().toString();
+//
+//        if (leave.equals(destination)) {
+//            label_msg.setText("Same");
+//        }
 
 
         leavechoicebox.getItems().addAll(leavecity);
@@ -155,6 +163,8 @@ public class HomeController implements Initializable {
     private void GoToBookingPage(ActionEvent event) {
         try {
             // Load the registration.fxml file
+
+            String username = label_msg.getText();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketbooking.fxml"));
             Stage stage = (Stage) tf_Home.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
@@ -162,6 +172,8 @@ public class HomeController implements Initializable {
             // Set the controller for the registration page
             HomeController homeController = loader.getController();
             homeController.setLoggedInUserId(loggedInUserId);
+            homeController.displayname(username);
+
 
             homeController.setMainApp(mainApp);
             mainApp.showBookingPage();
@@ -228,19 +240,32 @@ public class HomeController implements Initializable {
         String destination = destinationchoicebox.getValue();
         LocalDate date = datebox.getValue();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketbooking.fxml"));
-        root = loader.load();
+//        String leave = leavechoicebox.getItems().toString();
+//        String destination = destinationchoicebox.getItems().toString();
+        if (leave.equals(destination)) {
+            label_msg.setText("Leave And Destination Are Same!");
+        }
+        else {
 
-        TicketBookingController ticketBookingController = loader.getController();
-        ticketBookingController.displayleave(leave);
-        ticketBookingController.displaydestination(destination);
-        LocalDate selectedDate = datebox.getValue();
-        ticketBookingController.displaydate(selectedDate);
+            String username = label_msg.getText();
 
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketbooking.fxml"));
+            root = loader.load();
+
+            TicketBookingController ticketBookingController = loader.getController();
+            ticketBookingController.displayleave(leave);
+            ticketBookingController.displaydestination(destination);
+            LocalDate selectedDate = datebox.getValue();
+            ticketBookingController.displaydate(selectedDate);
+            ticketBookingController.displayname(username);
+
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
 }

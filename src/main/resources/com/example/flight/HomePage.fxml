@@ -72,8 +72,8 @@
                </image>
             </ImageView>
             <ChoiceBox fx:id="leavechoicebox" layoutX="1050.0" layoutY="165.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
-            <Label layoutX="1050.0" layoutY="134.0" text="LEAVING FROM" textFill="#0598ff" />
-            <Label layoutX="1215.0" layoutY="134.0" text="DESTINATION AT" textFill="#0598ff" />
+            <Label layoutX="1050.0" layoutY="134.0" text="LEAVING FROM" textFill="#011420" />
+            <Label layoutX="1215.0" layoutY="134.0" text="DESTINATION AT" textFill="#011420" />
             <ChoiceBox fx:id="destinationchoicebox" layoutX="1215.0" layoutY="165.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
             <DatePicker fx:id="datebox" layoutX="1050.0" layoutY="276.0" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: transparent; -fx-border-color: #2d8dc9; -fx-border-width: 0px 0px 2px 0px;" />
             <Button fx:id="Button_Search" layoutX="1050.0" layoutY="353.0" mnemonicParsing="false" onAction="#Search" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: #2d8dc9;" text="Search" textFill="#f8f6f6" />
@@ -81,32 +81,32 @@
                <children>
                   <VBox fx:id="slider" prefHeight="471.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="Button_gotobook" mnemonicParsing="false" onAction="#GoToBookingPage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Book a Flight " textFill="#0598ff">
+                        <Button fx:id="Button_gotobook" mnemonicParsing="false" onAction="#GoToBookingPage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Book a Flight " textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Flight Status" textFill="#0598ff">
+                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Flight Status" textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#goToUpdatePage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Update Profile" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#goToUpdatePage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Update Profile" textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#GoToBookingCancelPage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Ticket Cancel" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#GoToBookingCancelPage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Ticket Cancel" textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Contact Us" textFill="#0598ff">
+                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Contact Us" textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#goToLogin" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Logout" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#goToLogin" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Logout" textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -115,6 +115,7 @@
                   </VBox>
                </children>
             </AnchorPane>
+            <Label fx:id="label_msg" alignment="CENTER" layoutX="1052.0" layoutY="318.0" prefHeight="18.0" prefWidth="312.0" />
          </children>
       </AnchorPane>
         </children>

@@ -9,14 +9,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class PaymentController extends TicketBookingController {
 
@@ -39,6 +44,12 @@ public class PaymentController extends TicketBookingController {
     private Label PaymentDone_label;
 
     @FXML
+    private ImageView Menu;
+
+    @FXML
+    private ImageView MenuBack;
+
+    @FXML
     private Button PaytmButton;
 
     @FXML
@@ -49,6 +60,8 @@ public class PaymentController extends TicketBookingController {
 
     @FXML
     private Label tf_Home;
+    @FXML
+    private TextField tf_ticketid;
 
     @FXML
     private TextField tf_cvvcode;
@@ -56,6 +69,10 @@ public class PaymentController extends TicketBookingController {
     private static String loggedInUserId;
 
     private Main mainApp;
+
+    public void displayticketid(String ticketid) {
+        tf_ticketid.setText(ticketid);
+    }
 
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
@@ -70,13 +87,21 @@ public class PaymentController extends TicketBookingController {
         this.selectedFlight = selectedFlight;
     }
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        Image image1 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
+        Menu.setImage(image1);
+
+        Image image2 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
+        MenuBack.setImage(image2);
+    }
     @FXML
     private void PaymentDone(ActionEvent event) {
-        // Handle the payment process (capture card details, etc.)
-        // Call the insertBookingDetails method from TicketBookingController
+
         insertBookingDetails(selectedFlight);
 
-        // Display a confirmation message or navigate to a success page
         PaymentDone_label.setText("Payment successfully completed!");
 
         // You can navigate back to the booking page or perform other actions here
