@@ -5,12 +5,14 @@ import java.util.Date;
 
 public class FlightSearch {
     public int getticket_id;
-    Integer flight_id, price;
+        Integer flight_id;
         String flight_name, leave, destination;
         Date date;
         Time arrival_time, departure_time;
+        double price;
 
-        public FlightSearch(Integer flight_id, String flight_name, String leave, String destination, Date date, Time arrival_time, Time departure_time, Integer price) {
+        public FlightSearch(Integer flight_id,String flight_name, String leave, String destination, Date date, Time arrival_time, Time departure_time, double price) {
+//            this.ticket_id = ticket_id;
             this.flight_id = flight_id;
             this.flight_name = flight_name;
             this.leave = leave;
@@ -21,6 +23,10 @@ public class FlightSearch {
             this.price = price;
         }
 
+//        public Integer getTicket_id(){return ticket_id;}
+//
+//        public void setTicket_id(Integer ticket_id){this.ticket_id = ticket_id;}
+//
         public Integer getFlight_id() {
             return flight_id;
         }
@@ -29,11 +35,11 @@ public class FlightSearch {
             this.flight_id = flight_id;
         }
 
-        public Integer getPrice() {
+        public double getPrice() {
             return price;
         }
 
-        public void setPrice(Integer price) {
+        public void setPrice(double price) {
             this.price = price;
         }
 
@@ -84,4 +90,7 @@ public class FlightSearch {
         public void setDeparture_time(Time departure_time) {
             this.departure_time = departure_time;
         }
+
+    public int getticket_id() {return getticket_id;
     }
+}

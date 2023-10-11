@@ -218,6 +218,7 @@ public class TicketBookingController implements Initializable {
 
             while (queryOutput.next())
             {
+//                Integer queryticket_id= queryOutput.getInt("ticket_id");
                 Integer queryflight_id= queryOutput.getInt("flight_id");
                 String queryflight_name= queryOutput.getString("flight_name");
                 String queryleave= queryOutput.getString("leave");
@@ -231,11 +232,9 @@ public class TicketBookingController implements Initializable {
 //                    label_msg.setText("Same Value");
 //                }
 
-                if (!tf_leaveSearch.getText().equals(tf_destinationSearch.getText())) {
-                    label_msg.setText("Same Value");
-                }else {
-                    flightSearchObservableList.add(new FlightSearch(queryflight_id, queryflight_name, queryleave, querydestination, querydate, queryarrival_time, querydeparture_time, queryprice));
-                }
+
+                flightSearchObservableList.add(new FlightSearch(queryflight_id, queryflight_name, queryleave, querydestination, querydate, queryarrival_time, querydeparture_time, queryprice));
+
 
 //                flightSearchObservableList.add(new FlightSearch(queryflight_id,queryflight_name,queryleave,querydestination,querydate,queryarrival_time,querydeparture_time,queryprice));
 
@@ -576,8 +575,7 @@ public class TicketBookingController implements Initializable {
 
 // Set the parameter values
 //            preparedStatement.setInt(1, Integer.parseInt(tf_ticketid.getText())); // Assuming tf_ticketid is the ticket ID
-            preparedStatement.setInt(1, flightDetails.getticket_id); // Assuming tf_ticketid is the ticket ID
-
+            preparedStatement.setInt(1, flightDetails.getticket_id()); // Assuming tf_ticketid is the ticket ID
             preparedStatement.setString(2, UserSession.getLoggedInUserId()); // Assuming loggedInUserId is a user ID
             preparedStatement.setInt(3, flightDetails.getFlight_id());
             preparedStatement.setString(4, flightDetails.getFlight_name());
@@ -586,7 +584,7 @@ public class TicketBookingController implements Initializable {
             preparedStatement.setDate(7, sqlDate); // Use the converted java.sql.Date
             preparedStatement.setTimestamp(8, sqlArrivalTime); // Use the converted java.sql.Timestamp
             preparedStatement.setTimestamp(9, sqlDepartureTime); // Use the converted java.sql.Timestamp
-            preparedStatement.setInt(10, flightDetails.getPrice()); // Assuming price is an integer
+            preparedStatement.setDouble(10, flightDetails.getPrice()); // Assuming price is an integer
             preparedStatement.setTimestamp(11, java.sql.Timestamp.valueOf(LocalDateTime.now()));
 
 
