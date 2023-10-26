@@ -40,7 +40,7 @@
                 </Text>
                 <Button layoutX="282.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
                 <Button fx:id="button_signup" layoutX="252.0" layoutY="389.0" mnemonicParsing="false" onAction="#goToRegistration" prefHeight="26.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="SignUp" textFill="#0598ff" />
-            <Label fx:id="label_loginmessage" layoutX="32.0" layoutY="254.0" prefHeight="18.0" prefWidth="287.0" />
+            <Label fx:id="label_loginmessage" layoutX="66.0" layoutY="307.0" prefHeight="18.0" prefWidth="287.0" />
             <FontAwesomeIconView fill="#0598ff" glyphName="USERS" layoutX="180.0" layoutY="140.0" size="55" />
             </children>
         </AnchorPane>
