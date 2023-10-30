@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.FlightStatus">
+   <children>
+      <AnchorPane prefHeight="82.0" prefWidth="1550.0" style="-fx-background-color: #0598ff;">
+         <children>
+            <Text fill="#f6f6fa" layoutX="718.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight Status" wrappingWidth="145.59997558593756">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Label fx:id="label_flight" layoutX="95.0" layoutY="22.0" text="Flight" textFill="#fafcfc">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="Menu" fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/Menu.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="UserName" layoutX="791.0" layoutY="27.0" textFill="#fafcfc">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="MenuBack" fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/Menu.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="usernamecopy" alignment="CENTER" layoutX="1454.0" layoutY="39.0" prefHeight="30.0" prefWidth="92.0" textFill="#edf1f4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView fill="#f8f7f7" glyphName="USER" layoutX="1489.0" layoutY="37.0" selectionFill="#0494f4" size="30" />
+            <FontAwesomeIconView fill="#f8f7f7" glyphName="PLANE" layoutX="53.0" layoutY="50.0" selectionFill="#0494f4" size="40" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

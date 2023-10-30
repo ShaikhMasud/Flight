@@ -12,36 +12,36 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="800.0" maxWidth="1200.0" minHeight="600.0" minWidth="800.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.LoginController">
+<BorderPane maxHeight="800.0" maxWidth="1200.0" minHeight="600.0" minWidth="800.0" prefHeight="1100.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.LoginController">
     <left>
-        <AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
-            <Text fx:id="text_flight" fill="#ebe7e7" layoutX="68.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight Management ">
+        <AnchorPane prefHeight="200.0" prefWidth="550.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+            <Text fx:id="text_flight" fill="#ebe7e7" layoutX="168.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight Management ">
                 <font>
                     <Font size="24.0" />
                 </font>
             </Text>
-         <FontAwesomeIconView fill="#f2eeee" glyphName="PLANE" layoutX="145.0" layoutY="262.0" size="75" />
+         <FontAwesomeIconView fill="#f2eeee" glyphName="PLANE" layoutX="245.0" layoutY="349.0" size="75" />
         </AnchorPane>
     </left>
 
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="280.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="tf_username" layoutX="150.0" layoutY="217.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-                <PasswordField fx:id="tf_password" layoutX="150.0" layoutY="271.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                <TextField fx:id="tf_username" layoutX="340.0" layoutY="363.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                <PasswordField fx:id="tf_password" layoutX="340.0" layoutY="417.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
                 <VBox layoutX="24.0" layoutY="187.0" />
-                <Button fx:id="button_login" layoutX="187.0" layoutY="333.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #0598ff;" text="Login" />
+                <Button fx:id="button_login" layoutX="377.0" layoutY="479.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #0598ff;" text="Login" />
                 <Hyperlink layoutX="108.0" layoutY="349.0" />
-                <Hyperlink fx:id="hyperlink_forgotpass" layoutX="108.0" layoutY="390.0" onAction="#gotoforgotpassword" prefHeight="24.0" prefWidth="144.0" text="Forgot Your Password ? /" />
-                <Text fx:id="text_userlogin" fill="#0598ff" layoutX="153.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
+                <Hyperlink fx:id="hyperlink_forgotpass" layoutX="298.0" layoutY="536.0" onAction="#gotoforgotpassword" prefHeight="24.0" prefWidth="144.0" text="Forgot Your Password ? /" />
+                <Text fx:id="text_userlogin" fill="#0598ff" layoutX="343.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Text>
                 <Button layoutX="282.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-                <Button fx:id="button_signup" layoutX="252.0" layoutY="389.0" mnemonicParsing="false" onAction="#goToRegistration" prefHeight="26.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="SignUp" textFill="#0598ff" />
+                <Button fx:id="button_signup" layoutX="442.0" layoutY="535.0" mnemonicParsing="false" onAction="#goToRegistration" prefHeight="26.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="SignUp" textFill="#0598ff" />
             <Label fx:id="label_loginmessage" layoutX="66.0" layoutY="307.0" prefHeight="18.0" prefWidth="287.0" />
-            <FontAwesomeIconView fill="#0598ff" glyphName="USERS" layoutX="180.0" layoutY="140.0" size="55" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="USERS" layoutX="370.0" layoutY="286.0" size="55" />
             </children>
         </AnchorPane>
     </center>

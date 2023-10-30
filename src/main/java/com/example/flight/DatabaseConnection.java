@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
     // Define your MySQL database connection parameters here
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/flight";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/airline";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "Hak@786";
 

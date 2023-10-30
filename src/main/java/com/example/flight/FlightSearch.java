@@ -8,10 +8,10 @@ public class FlightSearch {
         Integer flight_id;
         String flight_name, leave, destination;
         Date date;
-        Time arrival_time, departure_time;
+        String arrival_time, departure_time;
         double price;
 
-        public FlightSearch(Integer flight_id,String flight_name, String leave, String destination, Date date, Time arrival_time, Time departure_time, double price) {
+        public FlightSearch(Integer flight_id,String flight_name, String leave, String destination, Date date, String arrival_time, String departure_time, double price) {
 //            this.ticket_id = ticket_id;
             this.flight_id = flight_id;
             this.flight_name = flight_name;
@@ -75,19 +75,19 @@ public class FlightSearch {
             this.date = date;
         }
 
-        public Time getArrival_time() {
+        public String getArrival_time() {
             return arrival_time;
         }
 
-        public void setArrival_time(Time arrival_time) {
+        public void setArrival_time(String arrival_time) {
             this.arrival_time = arrival_time;
         }
 
-        public Time getDeparture_time() {
+        public String getDeparture_time() {
             return departure_time;
         }
 
-        public void setDeparture_time(Time departure_time) {
+        public void setDeparture_time(String departure_time) {
             this.departure_time = departure_time;
         }
 

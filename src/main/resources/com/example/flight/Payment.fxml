@@ -12,17 +12,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.PaymentController">
    <children>
-      <TextField fx:id="tf_CardNumber" layoutX="490.0" layoutY="235.0" prefHeight="29.0" prefWidth="422.0" promptText="Enter Card number" />
-      <TextField fx:id="tf_CardName" layoutX="490.0" layoutY="285.0" prefHeight="36.0" prefWidth="422.0" promptText="Card Holder's Name" />
-      <DatePicker fx:id="ExpiryDate" layoutX="490.0" layoutY="341.0" promptText="Expiry Date" />
-      <TextField fx:id="tf_cvvcode" layoutX="760.0" layoutY="341.0" promptText="CVV Code" />
-      <Button layoutX="818.0" layoutY="430.0" mnemonicParsing="false" onAction="#PaymentDone" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #0598ff; -fx-border-radius: 2px 2px 2px 2px;" text="Book" textFill="#f2eded" />
-      <Button fx:id="BackToBookingPage" layoutX="484.0" layoutY="433.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #808080;" text="Back" />
-      <AnchorPane layoutY="-6.0" prefHeight="82.0" prefWidth="1000.0" style="-fx-background-color: #0598ff;">
+      <TextField fx:id="tf_CardNumber" layoutX="496.0" layoutY="279.0" prefHeight="29.0" prefWidth="422.0" promptText="Enter Card number" />
+      <TextField fx:id="tf_CardName" layoutX="496.0" layoutY="329.0" prefHeight="36.0" prefWidth="422.0" promptText="Card Holder's Name" />
+      <DatePicker fx:id="ExpiryDate" layoutX="496.0" layoutY="385.0" promptText="Expiry Date" />
+      <TextField fx:id="tf_cvvcode" layoutX="766.0" layoutY="385.0" promptText="CVV Code" />
+      <Button layoutX="824.0" layoutY="474.0" mnemonicParsing="false" onAction="#PaymentDone" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #0598ff; -fx-border-radius: 2px 2px 2px 2px;" text="Book" textFill="#f2eded" />
+      <Button fx:id="BackToBookingPage" layoutX="490.0" layoutY="477.0" mnemonicParsing="false" onAction="#GoToTicketBooking" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #808080;" text="Back" />
+      <AnchorPane layoutY="-6.0" prefHeight="82.0" prefWidth="1550.0" style="-fx-background-color: #0598ff;">
          <children>
-            <Text fill="#f2efef" layoutX="404.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Payment" textAlignment="CENTER" wrappingWidth="191.477783203125">
+            <Text fill="#f2efef" layoutX="679.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Payment" textAlignment="CENTER" wrappingWidth="191.477783203125">
                <font>
                   <Font size="28.0" />
                </font>
@@ -46,9 +46,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="96.0" layoutY="148.0" prefHeight="488.0" prefWidth="200.0">
+      <AnchorPane layoutX="96.0" layoutY="219.0" prefHeight="488.0" prefWidth="200.0">
          <children>
-            <VBox layoutY="70.0" prefHeight="478.0" prefWidth="200.0">
+            <VBox layoutY="70.0" prefHeight="394.0" prefWidth="200.0">
                <children>
                   <Button fx:id="CreditButton" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2px 2px 2px 2px; -fx-background-color: #0598ff;" text="Credit Card" textFill="WHITE">
                      <font>
@@ -61,11 +61,6 @@
                      </font>
                   </Button>
                   <Button fx:id="GPButton" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2px 2px 2px 2px; -fx-background-color: #0598ff;" text="Google Pay" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="PaytmButton" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2px 2px 2px 2px; -fx-background-color: #0598ff;" text="Paytm" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

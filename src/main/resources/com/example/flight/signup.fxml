@@ -8,26 +8,50 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.RegistrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.RegistrationController">
     <children>
-        <AnchorPane prefHeight="82.0" prefWidth="520.0" style="-fx-background-color: #0598ff;">
+        <AnchorPane prefHeight="82.0" prefWidth="1550.0" style="-fx-background-color: #0598ff;">
             <children>
-                <Label fx:id="L_UserRegisteration" layoutX="200.0" layoutY="27.0" text="User Sign Up" textFill="#f2eeee">
+                <Label fx:id="L_UserRegisteration" layoutX="727.0" layoutY="23.0" text="User Sign Up" textFill="#f2eeee">
                     <font>
-                        <Font size="18.0" />
+                        <Font size="24.0" />
                     </font>
                 </Label>
-            <FontAwesomeIconView fill="#f8f7f7" glyphName="PLANE" layoutX="157.0" layoutY="55.0" selectionFill="#0494f4" size="40" />
+            <FontAwesomeIconView fill="#f8f7f7" glyphName="PLANE" layoutX="685.0" layoutY="55.0" selectionFill="#0494f4" size="40" />
             </children>
         </AnchorPane>
-        <TextField fx:id="tf_firstname" layoutX="73.0" layoutY="117.0" prefHeight="24.0" prefWidth="369.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-        <TextField fx:id="tf_lastname" layoutX="73.0" layoutY="164.0" prefHeight="24.0" prefWidth="369.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-        <TextField fx:id="tf_username" layoutX="73.0" layoutY="207.0" prefHeight="24.0" prefWidth="369.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px  2px 0px;" />
-        <PasswordField fx:id="pf_password" layoutX="73.0" layoutY="294.0" prefHeight="24.0" prefWidth="369.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-        <PasswordField fx:id="pf_comfirm" layoutX="73.0" layoutY="338.0" prefHeight="24.0" prefWidth="369.0" promptText="Comfirm Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-        <Button fx:id="button_register" layoutX="73.0" layoutY="400.0" mnemonicParsing="false" onAction="#register" prefHeight="24.0" prefWidth="369.0" style="-fx-background-color: #0598ff;" text="Register" textFill="#f5f0f0" />
-        <Button fx:id="button_close" layoutX="73.0" layoutY="441.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="24.0" prefWidth="369.0" style="-fx-background-color: #0598ff;" text="Close" textFill="#eee9e9" />
-        <TextField fx:id="tf_contact" layoutX="73.0" layoutY="250.0" prefHeight="24.0" prefWidth="369.0" promptText="Contact Number" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px  2px 0px;" />
+        <TextField fx:id="tf_firstname" layoutX="590.0" layoutY="214.0" prefHeight="24.0" prefWidth="369.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="tf_lastname" layoutX="590.0" layoutY="261.0" prefHeight="24.0" prefWidth="369.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="tf_username" layoutX="590.0" layoutY="304.0" prefHeight="24.0" prefWidth="369.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px  2px 0px;">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <PasswordField fx:id="pf_password" layoutX="590.0" layoutY="391.0" prefHeight="24.0" prefWidth="369.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="14.0" />
+         </font></PasswordField>
+        <PasswordField fx:id="pf_comfirm" layoutX="590.0" layoutY="435.0" prefHeight="24.0" prefWidth="369.0" promptText="Comfirm Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="14.0" />
+         </font></PasswordField>
+        <Button fx:id="button_register" layoutX="590.0" layoutY="497.0" mnemonicParsing="false" onAction="#register" prefHeight="24.0" prefWidth="369.0" style="-fx-background-color: #0598ff;" text="Register" textFill="#f5f0f0">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+        <Button fx:id="button_close" layoutX="590.0" layoutY="538.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="24.0" prefWidth="369.0" style="-fx-background-color: #0598ff;" text="Close" textFill="#eee9e9">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+        <TextField fx:id="tf_contact" layoutX="590.0" layoutY="347.0" prefHeight="24.0" prefWidth="369.0" promptText="Contact Number" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px  2px 0px;">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
       <Label fx:id="label_message" layoutX="66.0" layoutY="373.0" prefHeight="18.0" prefWidth="370.0" />
     </children>
 </AnchorPane>

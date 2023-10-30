@@ -36,6 +36,9 @@ public class RegistrationController {
     }
 
     public void register() {
+        // Clear any previous highlighting
+        clearFieldStyles();
+
         String firstname = tf_firstname.getText();
         String lastname = tf_lastname.getText();
         String username = tf_username.getText();
@@ -45,23 +48,68 @@ public class RegistrationController {
 
         if (username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || contactText.isEmpty() || confirmPassword.isEmpty()) {
             label_message.setText("Enter Your Details.");
-        } else if (!isNumeric(contactText)) {
-            label_message.setText("Contact should only contain numbers.");
+            highlightEmptyFields();
+        } else if (!isNumeric(contactText) || contactText.length() != 10) {
+            label_message.setText("Contact should be a 10-digit number.");
+            highlightTextField(tf_contact);
         } else if (!isAlpha(firstname) || !isAlpha(lastname)) {
             label_message.setText("First name and last name should contain only alphabetical characters.");
+            if (!isAlpha(firstname)) {
+                highlightTextField(tf_firstname);
+            }
+            if (!isAlpha(lastname)) {
+                highlightTextField(tf_lastname);
+            }
         } else {
             long contact = Long.parseLong(contactText);
 
             if (usernameExists(username)) {
                 label_message.setText("User already exists.");
+                highlightTextField(tf_username);
             } else if (!password.equals(confirmPassword)) {
                 label_message.setText("Passwords do not match.");
+                highlightTextField(pf_password);
+                highlightTextField(pf_comfirm);
             } else if (createUser(firstname, lastname, username, contact, password, confirmPassword)) {
                 label_message.setText("Registration successful!");
             } else {
                 label_message.setText("Registration failed.");
             }
         }
+    }
+
+    private void highlightTextField(TextField textField) {
+        textField.setStyle("-fx-border-color: red;");
+    }
+
+    private void highlightEmptyFields() {
+        if (tf_firstname.getText().isEmpty()) {
+            highlightTextField(tf_firstname);
+        }
+        if (tf_lastname.getText().isEmpty()) {
+            highlightTextField(tf_lastname);
+        }
+        if (tf_username.getText().isEmpty()) {
+            highlightTextField(tf_username);
+        }
+        if (tf_contact.getText().isEmpty()) {
+            highlightTextField(tf_contact);
+        }
+        if (pf_password.getText().isEmpty()) {
+            highlightTextField(pf_password);
+        }
+        if (pf_comfirm.getText().isEmpty()) {
+            highlightTextField(pf_comfirm);
+        }
+    }
+
+    private void clearFieldStyles() {
+        tf_firstname.setStyle("");  // Clear the style to remove any highlighting
+        tf_lastname.setStyle("");
+        tf_username.setStyle("");
+        tf_contact.setStyle("");
+        pf_password.setStyle("");
+        pf_comfirm.setStyle("");
     }
 
 

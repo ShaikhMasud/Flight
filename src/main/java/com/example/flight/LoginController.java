@@ -46,6 +46,8 @@ public class LoginController {
 
         if (username.isEmpty() || password.isEmpty()) {
             label_loginmessage.setText("Enter Your Username And Password.");
+            highlightTextField(tf_username);
+            highlightTextField(tf_password);
         } else if (validateLogin(username, password)) {
             label_loginmessage.setText("Login successful!");
 
@@ -63,6 +65,26 @@ public class LoginController {
         } else {
             label_loginmessage.setText("Invalid credentials.");
         }
+    }
+
+
+
+    private void highlightTextField(TextField textField) {
+        textField.setStyle("-fx-border-color: red;");
+    }
+
+    private void highlightEmptyFields() {
+        if (tf_username.getText().isEmpty()) {
+            highlightTextField(tf_username);
+        }
+        if (tf_password.getText().isEmpty()) {
+            highlightTextField(tf_password);
+        }
+    }
+
+    private void clearFieldStyles() {
+        tf_username.setStyle("");
+        tf_password.setStyle("");
     }
 
     private boolean validateLogin(String username, String password) {

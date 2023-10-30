@@ -103,9 +103,14 @@ public class PaymentController extends TicketBookingController {
         insertBookingDetails(selectedFlight);
 
         PaymentDone_label.setText("Payment successfully completed!");
-
-        // You can navigate back to the booking page or perform other actions here
     }
 
 
+    public void GoToTicketBooking() {
+        try {
+            mainApp.showBookingPage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
