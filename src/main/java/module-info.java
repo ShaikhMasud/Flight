@@ -5,6 +5,7 @@ module Flight{
     requires java.sql;
     requires com.dlsc.formsfx;
     requires javafx.controls;
+    requires java.desktop;
 
 
     opens com.example.flight to javafx.fxml;

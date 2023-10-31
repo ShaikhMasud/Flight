@@ -147,7 +147,7 @@ public class LoginController {
     @FXML
     private void gotoforgotpassword(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("forgot_password.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ForgotPassword.fxml"));
             Stage stage = (Stage) tf_username.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 

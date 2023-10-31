@@ -19,7 +19,7 @@
       <DatePicker fx:id="ExpiryDate" layoutX="496.0" layoutY="385.0" promptText="Expiry Date" />
       <TextField fx:id="tf_cvvcode" layoutX="766.0" layoutY="385.0" promptText="CVV Code" />
       <Button layoutX="824.0" layoutY="474.0" mnemonicParsing="false" onAction="#PaymentDone" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #0598ff; -fx-border-radius: 2px 2px 2px 2px;" text="Book" textFill="#f2eded" />
-      <Button fx:id="BackToBookingPage" layoutX="490.0" layoutY="477.0" mnemonicParsing="false" onAction="#GoToTicketBooking" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #808080;" text="Back" />
+      <Button fx:id="BackToBookingPage" layoutX="490.0" layoutY="477.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #808080;" text="Back" />
       <AnchorPane layoutY="-6.0" prefHeight="82.0" prefWidth="1550.0" style="-fx-background-color: #0598ff;">
          <children>
             <Text fill="#f2efef" layoutX="679.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Payment" textAlignment="CENTER" wrappingWidth="191.477783203125">

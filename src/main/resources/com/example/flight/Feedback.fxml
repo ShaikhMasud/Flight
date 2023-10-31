@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1100.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.flight.FeedbackController">
+
+    <Label layoutX="544.0" layoutY="230.0" text="Please provide your feedback below:">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+
+    <TextArea fx:id="feedbackTextArea" layoutX="544.0" layoutY="284.0" prefHeight="150" prefWidth="461.0" />
+
+    <Label layoutX="544.0" layoutY="446.0" text="Your email (optional):">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+
+    <TextArea fx:id="emailTextArea" layoutX="542.0" layoutY="484.0" prefHeight="30" prefWidth="300" />
+
+    <Button layoutX="788.0" layoutY="583.0" onAction="#submitFeedback" style="-fx-background-color: #0598ff; -fx-background-radius: 30;" text="Submit" />
+   <AnchorPane prefHeight="82.0" prefWidth="1550.0" style="-fx-background-color: #0598ff;">
+      <children>
+         <FontAwesomeIconView fill="#f8f7f7" glyphName="PLANE" layoutX="58.0" layoutY="55.0" selectionFill="#0494f4" size="40" />
+         <Label layoutX="108.0" layoutY="27.0" text="Flight" textFill="#fafcfc">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="tf_Home" layoutX="698.0" layoutY="23.0" text="User FeedBack" textFill="#f0f4f7">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <Label fx:id="usernamecopy" alignment="CENTER" layoutX="1437.0" layoutY="41.0" prefHeight="30.0" prefWidth="92.0" textFill="#edf1f4">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="1382.0" layoutY="21.0" prefHeight="40.0" prefWidth="51.0" text="Info" textAlignment="CENTER" textFill="#f4f7fa">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <MenuButton fx:id="BookingPage" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#GoToBookingPage" style="-fx-background-color: #0598ff;" text="Book" textFill="#fcf8f8">
+            <items>
+               <MenuItem fx:id="MB_Action1" mnemonicParsing="false" onAction="#gotoHome" text="Flights" />
+            </items>
+            <font>
+               <Font size="14.0" />
+            </font>
+         </MenuButton>
+         <MenuButton layoutX="1293.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #0598ff;" text="Manage" textFill="#f4f3f3">
+            <items>
+               <MenuItem fx:id="MB_TicketCancel" mnemonicParsing="false" onAction="#GoToBookingCancelPage" text="Ticket Cancel" />
+               <MenuItem mnemonicParsing="false" onAction="#GoToFlightStatus" text="Flight Status" />
+            </items>
+            <font>
+               <Font size="14.0" />
+            </font>
+         </MenuButton>
+         <ImageView fx:id="Menu" fitHeight="25.0" fitWidth="31.0" layoutX="22.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../Images/Menu.jpg" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="MenuBack" fitHeight="25.0" fitWidth="31.0" layoutX="22.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../Images/Menu.jpg" />
+            </image>
+         </ImageView>
+         <FontAwesomeIconView fill="#f8f7f7" glyphName="USER" layoutX="1472.0" layoutY="38.0" selectionFill="#0494f4" size="30" />
+      </children>
+   </AnchorPane>
+   <Button layoutX="542.0" layoutY="583.0" onAction="#gotoHome" prefHeight="26.0" prefWidth="51.0" style="-fx-background-color: #0598ff; -fx-background-radius: 30;" text="Back" />
+   <AnchorPane layoutY="82.0" prefHeight="474.0" prefWidth="200.0">
+      <children>
+         <VBox fx:id="slider" prefHeight="471.0" prefWidth="200.0">
+            <children>
+               <Button fx:id="Button_gotobook" mnemonicParsing="false" onAction="#gotoHome" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Book a Flight " textFill="#01101b">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Button>
+               <Button mnemonicParsing="false" onAction="#GoToFlightStatus" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Flight Status" textFill="#01101b">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Button>
+               <Button mnemonicParsing="false" onAction="#goToUpdatePage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Update Profile" textFill="#01101b">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Button>
+               <Button mnemonicParsing="false" onAction="#GoToBookingCancelPage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Ticket Cancel" textFill="#01101b">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Button>
+               <Button mnemonicParsing="false" onAction="#GotoFeedback" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="FeedBack" textFill="#01101b">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Button>
+               <Button mnemonicParsing="false" onAction="#goToLogin" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Logout" textFill="#01101b">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Button>
+            </children>
+         </VBox>
+      </children>
+   </AnchorPane>
+
+</AnchorPane>

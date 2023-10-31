@@ -23,7 +23,10 @@
                             <Font size="18.0" />
                         </font>
                     </Label>
-                    <Label fx:id="tf_Home" layoutX="177.0" layoutY="34.0" text="Home" textFill="#f0f4f7" />
+                    <Label fx:id="tf_Home" layoutX="743.0" layoutY="23.0" text="Home" textFill="#f0f4f7">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
                     <Label fx:id="usernamecopy" alignment="CENTER" layoutX="1437.0" layoutY="41.0" prefHeight="30.0" prefWidth="92.0" textFill="#edf1f4">
                         <font>
                             <Font size="15.0" />
@@ -36,8 +39,7 @@
                     </Label>
             <MenuButton fx:id="BookingPage" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#GoToBookingPage" style="-fx-background-color: #0598ff;" text="Book" textFill="#fcf8f8">
               <items>
-                <MenuItem fx:id="MB_Action1" mnemonicParsing="false" onAction="#GoToBookingPage" text="Flights" />
-                <MenuItem fx:id="MB_Action2" mnemonicParsing="false" text="Action 2" />
+                <MenuItem fx:id="MB_Action1" mnemonicParsing="false" onAction="#gotoHome" text="Flights" />
               </items>
                <font>
                   <Font size="14.0" />
@@ -46,7 +48,7 @@
             <MenuButton layoutX="1293.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #0598ff;" text="Manage" textFill="#f4f3f3">
               <items>
                 <MenuItem fx:id="MB_TicketCancel" mnemonicParsing="false" onAction="#GoToBookingCancelPage" text="Ticket Cancel" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
+                <MenuItem mnemonicParsing="false" onAction="#GoToFlightStatus" text="Flight Status" />
               </items>
                <font>
                   <Font size="14.0" />
@@ -81,12 +83,12 @@
                <children>
                   <VBox fx:id="slider" prefHeight="471.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="Button_gotobook" mnemonicParsing="false" onAction="#GoToBookingPage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Book a Flight " textFill="#01101b">
+                        <Button fx:id="Button_gotobook" mnemonicParsing="false" onAction="#gotoHome" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Book a Flight " textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Flight Status" textFill="#01101b">
+                        <Button mnemonicParsing="false" onAction="#GoToFlightStatus" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Flight Status" textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -101,7 +103,7 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Contact Us" textFill="#01101b">
+                        <Button mnemonicParsing="false" onAction="#GotoFeedback" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="FeedBack" textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>

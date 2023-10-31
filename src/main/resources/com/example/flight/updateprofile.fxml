@@ -26,7 +26,7 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Flight Status" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#GoToFlightStatus" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Flight Status" textFill="#0598ff">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -41,7 +41,7 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="Contact Us" textFill="#0598ff">
+                        <Button mnemonicParsing="false" onAction="#GotoFeedback" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: White;" text="FeedBack" textFill="#0598ff">
                            <font>
                               <Font size="14.0" />
                            </font>

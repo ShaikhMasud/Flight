@@ -374,20 +374,22 @@ public class TicketBookingController implements Initializable {
     }
 
     @FXML
-    private void goToHome(ActionEvent event) {
+    private void goToHome() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            Stage stage = (Stage) UserName.getScene().getWindow();
+            Stage stage = (Stage) tf_Home.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 
-            HomeController homeController = loader.getController();
-            homeController.setLoggedInUserId(loggedInUserId);
-
-            homeController.setMainApp(mainApp);
+            // Set the controller for the registration page
+            TicketBookingController ticketBookingController = loader.getController();
+            ticketBookingController.setMainApp(mainApp);
+            ticketBookingController.setLoggedInUserId(loggedInUserId);
+            mainApp.showHome();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     private void GoToBookingPage(ActionEvent event) {
@@ -575,7 +577,7 @@ public class TicketBookingController implements Initializable {
 
 // Set the parameter values
             preparedStatement.setString(1, UserSession.getLoggedInUserId());
-            preparedStatement.setInt(2, flightDetails.getticket_id()); // Assuming tf_ticketid is the ticket ID
+            preparedStatement.setInt(2, Integer.parseInt(tf_ticketid.getText())); // Assuming tf_ticketid is the ticket ID
             preparedStatement.setInt(3, flightDetails.getFlight_id());
             preparedStatement.setString(4, flightDetails.getFlight_name());
             preparedStatement.setString(5, flightDetails.getLeave());
@@ -620,5 +622,39 @@ public class TicketBookingController implements Initializable {
         }
     }
 
+
+    @FXML
+    private void GoToFlightStatus() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FlightStatus.fxml"));
+            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            HomeController homeController = loader.getController();
+            homeController.setMainApp(mainApp);
+            mainApp.showflightstatus();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void GotoFeedback() {
+        try {
+            // Load the registration.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Feedback.fxml"));
+            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            TicketBookingController ticketBookingController = loader.getController();
+            ticketBookingController.setLoggedInUserId(loggedInUserId);
+            ticketBookingController.setMainApp(mainApp);
+            mainApp.showfeedback();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

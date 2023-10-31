@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -98,19 +95,46 @@ public class PaymentController extends TicketBookingController {
         MenuBack.setImage(image2);
     }
     @FXML
-    private void PaymentDone(ActionEvent event) {
+    private void PaymentDone() {
+        String cardNumber = tf_CardNumber.getText();
+        String cardName = tf_CardName.getText();
+        String cvvCode = tf_cvvcode.getText();
 
-        insertBookingDetails(selectedFlight);
-
-        PaymentDone_label.setText("Payment successfully completed!");
-    }
-
-
-    public void GoToTicketBooking() {
-        try {
-            mainApp.showBookingPage();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (cardNumber.isEmpty() || cardName.isEmpty() || cvvCode.isEmpty()) {
+            showError("Please fill in all required fields.");
+        } else if (!isValidCardNumber(cardNumber) || !isValidCardName(cardName) || !isValidCvvCode(cvvCode)) {
+            showError("Invalid card information. Please check the fields.");
+        } else {
+            // Perform payment and booking
+            insertBookingDetails(selectedFlight);
+            PaymentDone_label.setText("Payment successfully completed!");
         }
     }
+
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private boolean isValidCardNumber(String cardNumber) {
+        // Check if the card number contains 16 digits
+        return cardNumber.matches("\\d{16}");
+    }
+
+
+    private boolean isValidCardName(String cardName) {
+        // Check if the card name contains only alphabetic characters (no digits or special characters)
+        return cardName.matches("^[a-zA-Z ]+$");
+    }
+
+
+    private boolean isValidCvvCode(String cvvCode) {
+        // Check if the CVV code has a length of 3 digits
+        return cvvCode.length() == 3;
+    }
+
+
 }

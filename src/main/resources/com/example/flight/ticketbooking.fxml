@@ -38,8 +38,7 @@
             </Label>
             <MenuButton fx:id="BookingPage" layoutX="1218.0" layoutY="27.0" mnemonicParsing="false" onAction="#GoToBookingPage" style="-fx-background-color: #0598ff;" text="Book" textFill="#fcf8f8">
                <items>
-                  <MenuItem fx:id="MB_Action1" mnemonicParsing="false" onAction="#GoToBookingPage" text="Flights" />
-                  <MenuItem fx:id="MB_Action2" mnemonicParsing="false" text="Action 2" />
+                  <MenuItem fx:id="MB_Action1" mnemonicParsing="false" onAction="#goToHome" text="Flights" />
                </items>
                <font>
                   <Font size="14.0" />
@@ -48,7 +47,7 @@
             <MenuButton layoutX="1282.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #0598ff;" text="Manage" textFill="#f4f3f3">
                <items>
                   <MenuItem fx:id="MB_TicketCancel" mnemonicParsing="false" onAction="#GoToBookingCancelPage" text="Ticket Cancel" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#GoToFlightStatus" text="Flight Status" />
                </items>
                <font>
                   <Font size="14.0" />
@@ -100,18 +99,18 @@
          </font>
       </Label>
       <TextField fx:id="tf_flightid" layoutX="1244.0" layoutY="203.0" prefHeight="26.0" prefWidth="143.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button fx:id="Button_BackToHome" layoutX="1108.0" layoutY="640.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-background-color: #0598ff; -fx-border-radius: 4;" text="Back" textFill="#00080d" />
-      <Button fx:id="Button_Book" layoutX="1244.0" layoutY="640.0" mnemonicParsing="false" onAction="#BookButton" style="-fx-background-color: #0598ff; -fx-border-color: black; -fx-border-radius: 4;" text="Book" textFill="#00080d" />
+      <Button fx:id="Button_BackToHome" layoutX="1108.0" layoutY="640.0" mnemonicParsing="false" onAction="#goToHome" prefHeight="30.0" prefWidth="88.0" style="-fx-background-radius: 30;" text="Back" textFill="#00080d" />
+      <Button fx:id="Button_Book" layoutX="1299.0" layoutY="640.0" mnemonicParsing="false" onAction="#BookButton" prefHeight="30.0" prefWidth="88.0" style="-fx-background-radius: 30;" text="Book" textFill="#00080d" />
       <AnchorPane layoutY="82.0" prefHeight="379.0" prefWidth="200.0">
          <children>
             <VBox fx:id="slider" prefHeight="361.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#GoToBookingPage" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: white;" text="Book a Flight" textFill="#0598ff">
+                  <Button mnemonicParsing="false" onAction="#goToHome" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: white;" text="Book a Flight" textFill="#0598ff">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: white;" text="Flight Status" textFill="#0598ff">
+                  <Button mnemonicParsing="false" onAction="#GoToFlightStatus" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: white;" text="Flight Status" textFill="#0598ff">
                      <font>
                         <Font size="14.0" />
                      </font>

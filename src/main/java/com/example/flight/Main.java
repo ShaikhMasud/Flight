@@ -110,7 +110,7 @@ public class Main extends Application {
 
 
     public void showForgotPassword() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("forgot_password.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ForgotPassword.fxml"));
         Scene scene = new Scene(loader.load());
 
         // Set the controller for the registration page
@@ -121,6 +121,41 @@ public class Main extends Application {
         primaryStage.setTitle("Forgot Password Page");
     }
 
+    public void showflightstatus() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FlightStatus.fxml"));
+        Scene scene = new Scene(loader.load());
+
+        // Set the controller for the registration page
+        FlightStatus flightStatus = loader.getController();
+        flightStatus.setMainApp(this);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Flight Status Page");
+    }
+
+    public void showresetpassword() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ResetPassword.fxml"));
+        Scene scene = new Scene(loader.load());
+
+        // Set the controller for the registration page
+        ResetPasswordController resetPasswordController = loader.getController();
+        resetPasswordController.setMainApp(this);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Reset Password Page");
+    }
+
+    public void showfeedback() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Feedback.fxml"));
+        Scene scene = new Scene(loader.load());
+
+        // Set the controller for the registration page
+        FeedbackController feedbackController = loader.getController();
+        feedbackController.setMainApp(this);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("FeedBack Page");
+    }
     public void showPayment() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
         Scene scene = new Scene(loader.load());

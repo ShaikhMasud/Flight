@@ -115,15 +115,15 @@ public class BookingCancelController implements Initializable {
     private BookingData retrieveBookingData(String booking_id) {
         // Implement database query to retrieve booking data based on ticket ID
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT flight_id, user_id, `leave`, destination, price,booking_datetime FROM Booking WHERE booking_id = ?")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT flight_id, user_id, leave_airport, destination_airport, price,booking_datetime FROM Booking WHERE booking_id = ?")) {
             stmt.setString(1, booking_id);
             ResultSet resultSet = stmt.executeQuery();
 
             if (resultSet.next()) {
                 String flightId = resultSet.getString("flight_id");
                 String userId = resultSet.getString("user_id");
-                String leave = resultSet.getString("leave");
-                String destination = resultSet.getString("destination");
+                String leave = resultSet.getString("leave_airport");
+                String destination = resultSet.getString("destination_airport");
                 String price = resultSet.getString("price");
                 String bookingdate = resultSet.getString("booking_datetime");
 
@@ -309,6 +309,40 @@ public class BookingCancelController implements Initializable {
             homeController.setMainApp(mainApp);
             mainApp.showHome();
         }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void GoToFlightStatus() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FlightStatus.fxml"));
+            Stage stage = (Stage) tf_username.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            HomeController homeController = loader.getController();
+            homeController.setMainApp(mainApp);
+            mainApp.showflightstatus();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void GotoFeedback() {
+        try {
+            // Load the registration.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Feedback.fxml"));
+            Stage stage = (Stage) usernamecopy.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            BookingCancelController bookingCancelController = loader.getController();
+            bookingCancelController.setLoggedInUserId(loggedInUserId);
+            bookingCancelController.setMainApp(mainApp);
+            mainApp.showfeedback();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

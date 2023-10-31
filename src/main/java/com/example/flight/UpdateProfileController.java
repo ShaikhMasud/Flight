@@ -201,6 +201,22 @@ public class UpdateProfileController implements Initializable {
     }
 
     @FXML
+    private void GoToFlightStatus() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FlightStatus.fxml"));
+            Stage stage = (Stage) tf_username.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            HomeController homeController = loader.getController();
+            homeController.setMainApp(mainApp);
+            mainApp.showflightstatus();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void goToUpdatePage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("updateprofile.fxml"));
@@ -246,8 +262,25 @@ public class UpdateProfileController implements Initializable {
         }
     }
 
+    @FXML
+    private void GotoFeedback() {
+        try {
+            // Load the registration.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Feedback.fxml"));
+            Stage stage = (Stage) tf_username.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
 
+            // Set the controller for the registration page
+            UpdateProfileController updateProfileController = loader.getController();
+            updateProfileController.setLoggedInUserId(loggedInUserId);
+            updateProfileController.setMainApp(mainApp);
+            mainApp.showfeedback();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+}
 
 
 
