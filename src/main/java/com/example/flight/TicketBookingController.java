@@ -547,60 +547,60 @@ public class TicketBookingController implements Initializable {
     }
 
 
-    // Insert booking details into the MySQL database
-    public void insertBookingDetails(FlightSearch flightDetails) {
 
-        try {
-            DatabaseConnection connectNow = new DatabaseConnection();
-            Connection connectDB = DatabaseConnection.getConnection();
-
-            // Define the SQL query to insert booking details
-            String insertQuery = "INSERT INTO booking(user_id,ticket_id, flight_id,flight_name,leave_airport,destination_airport, date, arrival_time,departure_time,price,booking_datetime) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
-
-            // Create a PreparedStatement
-            PreparedStatement preparedStatement = connectDB.prepareStatement(insertQuery);
-
-// Assuming flightDetails.getArrival_time() and flightDetails.getDeparture_time() return java.sql.Time objects
-//            java.sql.Time arrivalTime = flightDetails.getArrival_time();
-//            java.sql.Time departureTime = flightDetails.getDeparture_time();
-
-// Convert java.sql.Time to java.util.Date and then to java.sql.Timestamp
-//            java.util.Date utilArrivalTime = new java.util.Date(arrivalTime.getTime());
-//            java.sql.Timestamp sqlArrivalTime = new java.sql.Timestamp(utilArrivalTime.getTime());
+//    public void insertBookingDetails(FlightSearch flightDetails) {
 //
-//            java.util.Date utilDepartureTime = new java.util.Date(departureTime.getTime());
-//            java.sql.Timestamp sqlDepartureTime = new java.sql.Timestamp(utilDepartureTime.getTime());
-
-            java.util.Date utilDate = flightDetails.getDate();
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-
-// Set the parameter values
-            preparedStatement.setString(1, UserSession.getLoggedInUserId());
-            preparedStatement.setInt(2, Integer.parseInt(tf_ticketid.getText())); // Assuming tf_ticketid is the ticket ID
-            preparedStatement.setInt(3, flightDetails.getFlight_id());
-            preparedStatement.setString(4, flightDetails.getFlight_name());
-            preparedStatement.setString(5, flightDetails.getLeave());
-            preparedStatement.setString(6, flightDetails.getDestination());
-            preparedStatement.setDate(7, sqlDate); // Use the converted java.sql.Date
-            preparedStatement.setString(8, flightDetails.getArrival_time()); // Use the converted java.sql.Timestamp
-            preparedStatement.setString(9, flightDetails.getDeparture_time()); // Use the converted java.sql.Timestamp
-            preparedStatement.setDouble(10, flightDetails.getPrice()); // Assuming price is an integer
-            preparedStatement.setTimestamp(11, java.sql.Timestamp.valueOf(LocalDateTime.now()));
-
-
-
-            // Execute the query to insert data
-            preparedStatement.executeUpdate();
-
-            // Close the PreparedStatement and database connection
-            preparedStatement.close();
-            connectDB.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle any database-related errors here
-        }
-    }
+//        try {
+//            DatabaseConnection connectNow = new DatabaseConnection();
+//            Connection connectDB = DatabaseConnection.getConnection();
+//
+//            // Define the SQL query to insert booking details
+//            String insertQuery = "INSERT INTO booking(user_id,ticket_id, flight_id,flight_name,leave_airport,destination_airport, date, arrival_time,departure_time,price,booking_datetime) " +
+//                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
+//
+//            // Create a PreparedStatement
+//            PreparedStatement preparedStatement = connectDB.prepareStatement(insertQuery);
+//
+//// Assuming flightDetails.getArrival_time() and flightDetails.getDeparture_time() return java.sql.Time objects
+////            java.sql.Time arrivalTime = flightDetails.getArrival_time();
+////            java.sql.Time departureTime = flightDetails.getDeparture_time();
+//
+//// Convert java.sql.Time to java.util.Date and then to java.sql.Timestamp
+////            java.util.Date utilArrivalTime = new java.util.Date(arrivalTime.getTime());
+////            java.sql.Timestamp sqlArrivalTime = new java.sql.Timestamp(utilArrivalTime.getTime());
+////
+////            java.util.Date utilDepartureTime = new java.util.Date(departureTime.getTime());
+////            java.sql.Timestamp sqlDepartureTime = new java.sql.Timestamp(utilDepartureTime.getTime());
+//
+//            java.util.Date utilDate = flightDetails.getDate();
+//            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+//
+//// Set the parameter values
+//            preparedStatement.setString(1, UserSession.getLoggedInUserId());
+//            preparedStatement.setInt(2, Integer.parseInt(tf_ticketid.getText())); // Assuming tf_ticketid is the ticket ID
+//            preparedStatement.setInt(3, flightDetails.getFlight_id());
+//            preparedStatement.setString(4, flightDetails.getFlight_name());
+//            preparedStatement.setString(5, flightDetails.getLeave());
+//            preparedStatement.setString(6, flightDetails.getDestination());
+//            preparedStatement.setDate(7, sqlDate); // Use the converted java.sql.Date
+//            preparedStatement.setString(8, flightDetails.getArrival_time()); // Use the converted java.sql.Timestamp
+//            preparedStatement.setString(9, flightDetails.getDeparture_time()); // Use the converted java.sql.Timestamp
+//            preparedStatement.setDouble(10, flightDetails.getPrice()); // Assuming price is an integer
+//            preparedStatement.setTimestamp(11, java.sql.Timestamp.valueOf(LocalDateTime.now()));
+//
+//
+//
+//            // Execute the query to insert data
+//            preparedStatement.executeUpdate();
+//
+//            // Close the PreparedStatement and database connection
+//            preparedStatement.close();
+//            connectDB.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            // Handle any database-related errors here
+//        }
+//    }
 
 
     @FXML

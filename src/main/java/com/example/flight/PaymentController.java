@@ -12,11 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -84,6 +82,13 @@ public class PaymentController extends TicketBookingController {
         this.selectedFlight = selectedFlight;
     }
 
+    private Connection connection;
+
+    // Initialize the database connection in your controller
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -105,11 +110,111 @@ public class PaymentController extends TicketBookingController {
         } else if (!isValidCardNumber(cardNumber) || !isValidCardName(cardName) || !isValidCvvCode(cvvCode)) {
             showError("Invalid card information. Please check the fields.");
         } else {
-            // Perform payment and booking
-            insertBookingDetails(selectedFlight);
-            PaymentDone_label.setText("Payment successfully completed!");
+            // If card information is valid, insert booking details and payment details
+            boolean bookingSuccess = insertBookingDetails(selectedFlight);
+            boolean paymentSuccess = insertPaymentDetails(selectedFlight, cardNumber);
+
+            if (bookingSuccess && paymentSuccess) {
+                PaymentDone_label.setText("Payment and booking successfully completed!");
+            } else {
+                showError("Failed to insert booking and payment details.");
+            }
         }
     }
+
+    // Insert booking details into the 'Booking' table
+    private boolean insertBookingDetails(FlightSearch selectedFlight) {
+        try {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = DatabaseConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO booking(user_id,ticket_id, flight_id,flight_name,leave_airport,destination_airport, date, arrival_time,departure_time,price,booking_datetime) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?)"
+            );
+
+            java.util.Date utilDate = selectedFlight.getDate();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            // Set the appropriate values for user_id, ticket_id, flight_id, and booking_datetime
+            statement.setInt(1, Integer.parseInt(loggedInUserId));
+            statement.setInt(2, Integer.parseInt(tf_ticketid.getText()));
+            statement.setInt(3, selectedFlight.getFlight_id());
+            statement.setString(4, selectedFlight.getFlight_name());
+            statement.setString(5, selectedFlight.getLeave());
+            statement.setString(6, selectedFlight.getDestination());
+            statement.setDate(7, sqlDate); // Use the converted java.sql.Date
+            statement.setString(8, selectedFlight.getArrival_time()); // Use the converted java.sql.Timestamp
+            statement.setString(9, selectedFlight.getDeparture_time()); // Use the converted java.sql.Timestamp
+            statement.setDouble(10, selectedFlight.getPrice()); // Assuming price is an integer
+            statement.setTimestamp(11, new Timestamp(System.currentTimeMillis()));
+
+            // Execute the SQL statement
+            int rowsInserted = statement.executeUpdate();
+
+            // Check if the insert was successful
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Insert payment details into the 'Payment' table
+    private boolean insertPaymentDetails(FlightSearch selectedFlight, String cardNumber) {
+        try {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = DatabaseConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO Payment (booking_id, payment_date, amount) VALUES (?, ?, ?)"
+            );
+
+            // Get the booking_id (assuming you have a way to obtain it after the booking)
+            int bookingId = getBookingId();
+
+            // Set the appropriate values for booking_id, payment_date, and amount
+            statement.setInt(1, bookingId);
+            statement.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+            statement.setDouble(3, selectedFlight.getPrice());
+
+            // Execute the SQL statement
+            int rowsInserted = statement.executeUpdate();
+
+            // Check if the insert was successful
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Add a method to retrieve the booking_id (you should implement this method)
+    // Add a method to retrieve the booking_id
+    private int getBookingId() {
+        try {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = DatabaseConnection.getConnection();
+            // Create a SQL statement to retrieve the last inserted booking_id
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT LAST_INSERT_ID() AS booking_id"
+            );
+
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                // Retrieve the booking_id from the result set
+                return resultSet.getInt("booking_id");
+            } else {
+                // Handle the case where no booking_id was found
+                return -1; // Or use another suitable error value
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception as needed
+            return -1; // Or use another suitable error value
+        }
+    }
+
 
     private void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
