@@ -185,6 +185,8 @@ public class HomeController implements Initializable {
     @FXML
     private void GoToBookingCancelPage() {
         try {
+            String username = usernamecopy.getText();
+
             // Load the registration.fxml file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("bookingcancel.fxml"));
             Stage stage = (Stage) tf_Home.getScene().getWindow();
@@ -192,6 +194,7 @@ public class HomeController implements Initializable {
 
             // Set the controller for the registration page
             HomeController homeController = loader.getController();
+            homeController.displayname(username);
             homeController.setLoggedInUserId(loggedInUserId);
             homeController.setMainApp(mainApp);
             mainApp.showCancelPage();

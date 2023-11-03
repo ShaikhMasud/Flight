@@ -562,15 +562,15 @@ public class TicketBookingController implements Initializable {
 //            PreparedStatement preparedStatement = connectDB.prepareStatement(insertQuery);
 //
 //// Assuming flightDetails.getArrival_time() and flightDetails.getDeparture_time() return java.sql.Time objects
-////            java.sql.Time arrivalTime = flightDetails.getArrival_time();
-////            java.sql.Time departureTime = flightDetails.getDeparture_time();
+//            java.sql.Time arrivalTime = Time.valueOf(flightDetails.getArrival_time());
+//            java.sql.Time departureTime = Time.valueOf(flightDetails.getDeparture_time());
 //
 //// Convert java.sql.Time to java.util.Date and then to java.sql.Timestamp
-////            java.util.Date utilArrivalTime = new java.util.Date(arrivalTime.getTime());
-////            java.sql.Timestamp sqlArrivalTime = new java.sql.Timestamp(utilArrivalTime.getTime());
-////
-////            java.util.Date utilDepartureTime = new java.util.Date(departureTime.getTime());
-////            java.sql.Timestamp sqlDepartureTime = new java.sql.Timestamp(utilDepartureTime.getTime());
+//            java.util.Date utilArrivalTime = new java.util.Date(arrivalTime.getTime());
+//            java.sql.Timestamp sqlArrivalTime = new java.sql.Timestamp(utilArrivalTime.getTime());
+//
+//            java.util.Date utilDepartureTime = new java.util.Date(departureTime.getTime());
+//            java.sql.Timestamp sqlDepartureTime = new java.sql.Timestamp(utilDepartureTime.getTime());
 //
 //            java.util.Date utilDate = flightDetails.getDate();
 //            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());

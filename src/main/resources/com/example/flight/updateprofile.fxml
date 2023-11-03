@@ -84,10 +84,10 @@
       <Button fx:id="Button_Update" layoutX="856.0" layoutY="500.0" mnemonicParsing="false" onAction="#update" style="-fx-background-radius: 30;" text="Save Change" />
       <TextField fx:id="pf_password" layoutX="797.0" layoutY="376.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField layoutX="797.0" layoutY="435.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField layoutX="796.0" layoutY="317.0" promptText="Contact No." style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_username" layoutX="797.0" layoutY="259.0" promptText="Masud" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_lastname" layoutX="796.0" layoutY="199.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_firstname" layoutX="796.0" layoutY="135.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField layoutX="796.0" layoutY="317.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="tf_username" layoutX="797.0" layoutY="259.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="tf_lastname" layoutX="796.0" layoutY="199.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="tf_firstname" layoutX="796.0" layoutY="135.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <AnchorPane prefHeight="82.0" prefWidth="1000.0">
          <children>
             <AnchorPane prefHeight="82.0" prefWidth="1550.0" style="-fx-background-color: #0598ff;">
