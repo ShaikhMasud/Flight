@@ -129,7 +129,7 @@ public class PaymentController extends TicketBookingController {
                 java.util.Date utilDate = selectedFlight.getDate();
                 java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
-                preparedStatement.setString(1, UserSession.getLoggedInUserId());
+                preparedStatement.setInt(1, UserSession.getLoggedInUserId());
                 preparedStatement.setInt(2, Integer.parseInt(tf_ticketid.getText()));
                 preparedStatement.setInt(3, selectedFlight.getFlight_id());
                 preparedStatement.setString(4, selectedFlight.getFlight_name());
@@ -160,10 +160,32 @@ public class PaymentController extends TicketBookingController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
     private boolean isValidCardNumber(String cardNumber) {
-        return cardNumber.matches("\\d{16}");
+        // Check if the card number consists of 16 digits
+        if (!cardNumber.matches("\\d{16}")) {
+            return false;
+        }
+
+        // Validate the card number using the Luhn algorithm
+        int sum = 0;
+        boolean alternate = false;
+        for (int i = cardNumber.length() - 1; i >= 0; i--) {
+            int digit = Integer.parseInt(cardNumber.substring(i, i + 1));
+            if (alternate) {
+                digit *= 2;
+                if (digit > 9) {
+                    digit -= 9;
+                }
+            }
+            sum += digit;
+            alternate = !alternate;
+        }
+        return sum%10==0;
     }
+
+//    private boolean isValidCardNumber(String cardNumber) {
+//        return cardNumber.matches("\\d{16}");
+//    }
 
     private boolean isValidCardName(String cardName) {
         return cardName.matches("^[a-zA-Z ]+$");

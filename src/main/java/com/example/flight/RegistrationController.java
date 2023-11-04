@@ -1,7 +1,10 @@
 package com.example.flight;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -162,8 +165,16 @@ public class RegistrationController {
         }
     }
 
-    public void goToLogin() {
+    @FXML
+    private void goToLogin() {
         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Stage stage = (Stage) tf_username.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            HomeController homeController = loader.getController();
+            homeController.setMainApp(mainApp);
             mainApp.showLogin();
         } catch (IOException e) {
             e.printStackTrace();

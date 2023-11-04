@@ -181,6 +181,7 @@ public class TicketBookingController implements Initializable {
         tf_leaveSearch.setDisable(true);
         tf_destinationSearch.setDisable(true);
 
+
         Image image1 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
         Menu.setImage(image1);
 
@@ -614,7 +615,7 @@ public class TicketBookingController implements Initializable {
             homeController.setMainApp(mainApp);
 
             // Pass the logged-in user's ID to the home controller
-            homeController.setLoggedInUserId(loggedInUserId); // Set the logged-in user's ID
+            homeController.setLoggedInUserId(Integer.valueOf(loggedInUserId)); // Set the logged-in user's ID
 
             mainApp.showHome();
         } catch (IOException e) {

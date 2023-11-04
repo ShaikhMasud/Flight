@@ -63,8 +63,16 @@ public class ForgotPasswordController {
         alert.showAndWait();
     }
 
-    public void goToLogin() {
+    @FXML
+    private void goToLogin() {
         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            HomeController homeController = loader.getController();
+            homeController.setMainApp(mainApp);
             mainApp.showLogin();
         } catch (IOException e) {
             e.printStackTrace();

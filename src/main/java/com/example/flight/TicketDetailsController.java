@@ -1,14 +1,15 @@
 package com.example.flight;
 
+import com.example.flight.BookingDetails;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -17,38 +18,48 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
+import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-
-public class HomeController implements Initializable {
-    @FXML
-    private Label tf_Home;
+public class TicketDetailsController implements Initializable {
 
     @FXML
-    private Label label_msg;
-    @FXML
-    private ChoiceBox<String> leavechoicebox;
-    private String[] leavecity = {"Mumbai", "Delhi", "Chennai", "Jaipur"};
-    @FXML
-    private ChoiceBox<String> destinationchoicebox;
-    private String[] departcity = {"Mumbai", "Delhi", "Chennai", "Jaipur"};
+    private TableView<BookingDetails> bookingTableView;
 
+    @FXML
+    private TableColumn<BookingDetails, Integer> bookingIdColumn;
+    @FXML
+    private TableColumn<BookingDetails, Integer> userIdColumn;
+    @FXML
+    private TableColumn<BookingDetails, Integer> ticketIdColumn;
+    @FXML
+    private TableColumn<BookingDetails, Integer> flightIdColumn;
+    @FXML
+    private TableColumn<BookingDetails, String> flightNameColumn;
+    @FXML
+    private TableColumn<BookingDetails, String> leaveAirportColumn;
+    @FXML
+    private TableColumn<BookingDetails, String> destinationAirportColumn;
+    @FXML
+    private TableColumn<BookingDetails, Date> dateColumn;
+    @FXML
+    private TableColumn<BookingDetails, String> arrivalTimeColumn;
+    @FXML
+    private TableColumn<BookingDetails, String> departureTimeColumn;
+    @FXML
+    private TableColumn<BookingDetails, Double> priceColumn;
+    @FXML
+    private TableColumn<BookingDetails, Date> bookingDatetimeColumn;
     @FXML
     private MenuButton BookingPage;
+
     @FXML
     private MenuItem MB_Action1;
 
     @FXML
-    private MenuItem MB_Action2;
-
-    @FXML
-    private Button Button_Search;
-
-
-    @FXML
     private MenuItem MB_TicketCancel;
+
     @FXML
     private ImageView Menu;
 
@@ -56,26 +67,16 @@ public class HomeController implements Initializable {
     private ImageView MenuBack;
 
     @FXML
-    private ImageView Image_Home;
-    @FXML
-    private DatePicker datebox;
-
-    @FXML
-    private Button Button_gotobook;
-
-    @FXML
     private VBox slider;
 
     @FXML
-    private Label usernamecopy;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
+    private Label tf_Home;
     public void displayname(String username) {
         usernamecopy.setText(username);
     }
 
+    @FXML
+    private Label usernamecopy;
 
     private Main mainApp;
 
@@ -83,40 +84,23 @@ public class HomeController implements Initializable {
         this.mainApp = mainApp;
     }
 
-    private Integer loggedInUserId;
+    private int loggedInUserId; // Change to int for user_id
 
-    public void setLoggedInUserId(Integer userId) {
+    public void setLoggedInUserId(int userId) {
         loggedInUserId = userId;
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        Image image = new Image(Objects.requireNonNull(getClass().getResource("/Images/HomePageImage.jpg")).toString());
-        Image_Home.setImage(image);
-
         Image image1 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
         Menu.setImage(image1);
 
         Image image2 = new Image(Objects.requireNonNull(getClass().getResource("/Images/Menu.jpg")).toString());
         MenuBack.setImage(image2);
 
-
-//        String leave = leavechoicebox.getItems().toString();
-//        String destination = destinationchoicebox.getItems().toString();
-//
-//        if (leave.equals(destination)) {
-//            label_msg.setText("Same");
-//        }
-
-
-        leavechoicebox.getItems().addAll(leavecity);
-        destinationchoicebox.getItems().addAll(departcity);
-
         slider.setTranslateX(-176);
-        Menu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
+
+        Menu.setOnMouseClicked(event -> {TranslateTransition slide = new TranslateTransition();
 
             slide.setDuration(Duration.seconds(0.4));
 
@@ -157,6 +141,45 @@ public class HomeController implements Initializable {
             });
 
         });
+        // Fetch and display Booking details
+        ObservableList<BookingDetails> bookingData = getBookingDetails(loggedInUserId);
+        bookingTableView.setItems(bookingData);
+    }
+
+    // Implement this method to retrieve data from your database
+    private ObservableList<BookingDetails> getBookingDetails(int userId) {
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String query = "SELECT booking_id,ticket_id,flight_id,flight_name,leave_airport,destination_airport,date,arrival_time,departure_time,price,booking_datetime FROM booking WHERE user_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, UserSession.getLoggedInUserId()); // Use setInt for binding the parameter
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            ObservableList<BookingDetails> bookingDetails = FXCollections.observableArrayList();
+            while (resultSet.next()) {
+                Integer bookingId = resultSet.getInt("Booking ID");
+                Integer ticketId = resultSet.getInt("Ticket ID");
+                Integer flightId = resultSet.getInt("Flight ID");
+                String flightName = resultSet.getString("Flight Name");
+                String leaveAirport = resultSet.getString("leave airport");
+                String destinationAirport = resultSet.getString("destination airport");
+                Date date = resultSet.getDate("date");
+                String arrivalTime = resultSet.getString("arrival time");
+                String departureTime = resultSet.getString("departure time");
+                Double price = resultSet.getDouble("price");
+                Timestamp bookingDatetime = resultSet.getTimestamp("booking datetime");
+
+                BookingDetails bookingDetail = new BookingDetails(
+                        bookingId, userId, ticketId, flightId, flightName, leaveAirport,
+                        destinationAirport, date, arrivalTime, departureTime, price, bookingDatetime
+                );
+
+                bookingDetails.add(bookingDetail);
+            }
+            return bookingDetails;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return FXCollections.observableArrayList();
+        }
     }
 
     @FXML
@@ -164,18 +187,17 @@ public class HomeController implements Initializable {
         try {
             // Load the registration.fxml file
 
-            String username = label_msg.getText();
+            String username = usernamecopy.getText();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketbooking.fxml"));
-            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            Stage stage = (Stage) usernamecopy.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 
             // Set the controller for the registration page
-            HomeController homeController = loader.getController();
-            homeController.setLoggedInUserId(loggedInUserId);
-            homeController.displayname(username);
+            TicketBookingController ticketBookingController = loader.getController();
+            ticketBookingController.setLoggedInUserId(String.valueOf(loggedInUserId));
+            ticketBookingController.displayname(username);
 
-
-            homeController.setMainApp(mainApp);
+            ticketBookingController.setMainApp(mainApp);
             mainApp.showBookingPage();
         } catch (IOException e) {
             e.printStackTrace();
@@ -189,13 +211,13 @@ public class HomeController implements Initializable {
 
             // Load the registration.fxml file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("bookingcancel.fxml"));
-            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            Stage stage = (Stage) usernamecopy.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 
             // Set the controller for the registration page
             HomeController homeController = loader.getController();
             homeController.displayname(username);
-            homeController.setLoggedInUserId(loggedInUserId);
+            homeController.setLoggedInUserId(Integer.valueOf(String.valueOf(loggedInUserId)));
             homeController.setMainApp(mainApp);
             mainApp.showCancelPage();
         } catch (IOException e) {
@@ -207,12 +229,12 @@ public class HomeController implements Initializable {
     private void goToUpdatePage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("updateprofile.fxml"));
-            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            Stage stage = (Stage) usernamecopy.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 
             // Set the controller for the registration page
             HomeController homeController = loader.getController();
-            homeController.setLoggedInUserId(loggedInUserId);
+            homeController.setLoggedInUserId(Integer.valueOf(String.valueOf(loggedInUserId)));
 
             homeController.setMainApp(mainApp);
             mainApp.showUpdatePage();
@@ -222,82 +244,10 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void goToLogin() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-            Stage stage = (Stage) tf_Home.getScene().getWindow();
-            stage.getScene().setRoot(loader.load());
-
-            // Set the controller for the registration page
-            HomeController homeController = loader.getController();
-            homeController.setMainApp(mainApp);
-            mainApp.showLogin();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void GoToFlightDetails() {
-        try {
-            String username = usernamecopy.getText();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("t.fxml")); // Update the FXML filename
-            Stage stage = (Stage) usernamecopy.getScene().getWindow();
-            stage.getScene().setRoot(loader.load());
-
-            // Set the controller for the "Flight Details" page
-            TicketDetailsController ticketDetailsController = loader.getController();
-            ticketDetailsController.setLoggedInUserId(Integer.parseInt(String.valueOf(loggedInUserId))); // You may need to implement this method in FlightDetailsController
-            ticketDetailsController.displayname(username); // You may need to implement this method in FlightDetailsController
-
-            ticketDetailsController.setMainApp(mainApp);
-            mainApp.showflightdetails(); // Make sure this method exists in your Main class
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-    public void Search(ActionEvent event) throws IOException {
-        String leave = leavechoicebox.getValue();
-        String destination = destinationchoicebox.getValue();
-        LocalDate date = datebox.getValue();
-
-//        String leave = leavechoicebox.getItems().toString();
-//        String destination = destinationchoicebox.getItems().toString();
-        if (leave.equals(destination)) {
-            label_msg.setText("Leave And Destination Are Same!");
-        }
-        else {
-
-            String username = label_msg.getText();
-
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ticketbooking.fxml"));
-            root = loader.load();
-
-            TicketBookingController ticketBookingController = loader.getController();
-            ticketBookingController.displayleave(leave);
-            ticketBookingController.displaydestination(destination);
-            LocalDate selectedDate = datebox.getValue();
-            ticketBookingController.displaydate(selectedDate);
-            ticketBookingController.displayname(username);
-
-
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-
-    @FXML
     private void GoToFlightStatus() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FlightStatus.fxml"));
-            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            Stage stage = (Stage) usernamecopy.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 
             // Set the controller for the registration page
@@ -322,7 +272,7 @@ public class HomeController implements Initializable {
 
             // Pass the logged-in user's ID to the home controller
             homeController.displayname(username);
-            homeController.setLoggedInUserId(UserSession.getLoggedInUserId());
+            homeController.setLoggedInUserId(Integer.valueOf(String.valueOf(loggedInUserId)));
 
             mainApp.showHome();
         } catch (IOException e) {
@@ -335,18 +285,33 @@ public class HomeController implements Initializable {
         try {
             // Load the registration.fxml file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Feedback.fxml"));
-            Stage stage = (Stage) tf_Home.getScene().getWindow();
+            Stage stage = (Stage) usernamecopy.getScene().getWindow();
             stage.getScene().setRoot(loader.load());
 
             // Set the controller for the registration page
             FeedbackController feedbackController = loader.getController();
             feedbackController.setMainApp(mainApp);
-            feedbackController.setLoggedInUserId(UserSession.getLoggedInUserId());
+            feedbackController.setLoggedInUserId(Integer.valueOf(String.valueOf(loggedInUserId)));
 
             mainApp.showfeedback();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
 
+    @FXML
+    private void goToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Stage stage = (Stage) usernamecopy.getScene().getWindow();
+            stage.getScene().setRoot(loader.load());
+
+            // Set the controller for the registration page
+            HomeController homeController = loader.getController();
+            homeController.setMainApp(mainApp);
+            mainApp.showLogin();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

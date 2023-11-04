@@ -72,7 +72,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="#0598ff" layoutX="618.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price of the Ticket :">
+      <Text fill="#0598ff" layoutX="618.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price of the Ticket :">
          <font>
             <Font size="14.0" />
          </font>
@@ -88,7 +88,7 @@
          </font>
       </Text>
       <TextField fx:id="tf_username" layoutX="1017.0" layoutY="280.0" style="-fx-background-color: tRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_price" layoutX="783.0" layoutY="439.0" style="-fx-background-color: tRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="tf_price" layoutX="783.0" layoutY="450.0" style="-fx-background-color: tRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="tf_leave" layoutX="1015.0" layoutY="330.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: tRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="tf_destination" layoutX="1015.0" layoutY="381.0" style="-fx-background-color: tRANSPARENT; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <Button fx:id="Button_BackToHome" layoutX="738.0" layoutY="537.0" mnemonicParsing="false" onAction="#goToHome" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: #0598ff;" text="Back" textFill="#f7f0f0" wrapText="true" />
@@ -98,7 +98,7 @@
          </image>
       </ImageView>
       <Button layoutX="668.0" layoutY="283.0" mnemonicParsing="false" onAction="#show" prefWidth="55.0" style="-fx-background-color: transparent;" text="Search" textFill="#0598ff" />
-      <Label fx:id="label_msg" alignment="CENTER" layoutX="632.0" layoutY="483.0" prefHeight="18.0" prefWidth="285.0" />
+      <Label fx:id="label_msg" alignment="CENTER" layoutX="632.0" layoutY="497.0" prefHeight="18.0" prefWidth="285.0" />
       <AnchorPane layoutY="164.0" prefHeight="465.0" prefWidth="200.0" />
       <VBox fx:id="slider" layoutY="81.0" prefHeight="471.0" prefWidth="200.0">
          <children>

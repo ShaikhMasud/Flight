@@ -167,6 +167,20 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Payment");
     }
+
+    public void showflightdetails() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("t.fxml"));
+        Scene scene = new Scene(loader.load());
+
+        // Set the controller for the registration page
+        TicketDetailsController ticketDetailsController = loader.getController();
+        ticketDetailsController.setMainApp(this);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Flight Details Page");
+    }
+
+
 }
 
 

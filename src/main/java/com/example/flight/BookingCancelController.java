@@ -156,14 +156,16 @@ public class BookingCancelController implements Initializable {
     }
 
 
-    private boolean deleteticket(String ticket_id) {
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("delete from booking WHERE booking_id = ?")) {
+    private boolean deleteticket(String booking_id) {
+        String insertQuery = "Delete from booking where booking_id=?";
+
+        try (Connection connectDB = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connectDB.prepareStatement(insertQuery)) {
 
             // Update the user's profile based on their username
-            stmt.setString(1, ticket_id);
+            preparedStatement.setString(1,booking_id);
 
-            int rowsAffected = stmt.executeUpdate();
+            int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected == 1;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -96,7 +96,7 @@ public class LoginController {
 
             if (rs.next()) {
                 // Store the logged-in user's ID
-                UserSession.setLoggedInUserId(rs.getString("user_id"));
+                UserSession.setLoggedInUserId(rs.getInt("user_id"));
                 return true;
             }
         } catch (SQLException e) {

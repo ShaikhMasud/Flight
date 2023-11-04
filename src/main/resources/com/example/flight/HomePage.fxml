@@ -81,7 +81,7 @@
             <Button fx:id="Button_Search" layoutX="1050.0" layoutY="353.0" mnemonicParsing="false" onAction="#Search" prefHeight="24.0" prefWidth="312.0" style="-fx-background-color: #2d8dc9;" text="Search" textFill="#f8f6f6" />
             <AnchorPane layoutX="-1.0" prefHeight="474.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox fx:id="slider" prefHeight="471.0" prefWidth="200.0">
+                  <VBox fx:id="slider" prefHeight="514.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="Button_gotobook" mnemonicParsing="false" onAction="#gotoHome" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Book a Flight " textFill="#01101b">
                            <font>
@@ -108,7 +108,12 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#goToLogin" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Logout" textFill="#01101b">
+                        <Button mnemonicParsing="false" onAction="#GoToFlightDetails" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Flight Details" textFill="#01101b">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#goToLogin" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: WHITE;" text="Logout" textFill="#01101b">
                            <font>
                               <Font size="14.0" />
                            </font>

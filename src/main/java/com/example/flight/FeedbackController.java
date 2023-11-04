@@ -65,9 +65,9 @@ public class FeedbackController implements Initializable {
         this.mainApp = mainApp;
     }
 
-    private String loggedInUserId;
+    private Integer loggedInUserId;
 
-    public void setLoggedInUserId(String userId) {
+    public void setLoggedInUserId(Integer userId) {
         loggedInUserId = userId;
     }
 
@@ -90,7 +90,7 @@ public class FeedbackController implements Initializable {
         try (Connection connection = DatabaseConnection.getConnection()) {
             String insertQuery = "INSERT INTO feedback (user_id,feedback_text,email) VALUES (?, ?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-            preparedStatement.setString(1, loggedInUserId);
+            preparedStatement.setInt(1, loggedInUserId);
             preparedStatement.setString(2, feedback);
             preparedStatement.setString(3, email);
             preparedStatement.executeUpdate();

@@ -1,13 +1,13 @@
 package com.example.flight;
 
 public class UserSession {
-    private static String loggedInUserId;
+    private static Integer loggedInUserId;
 
-    public static String getLoggedInUserId() {
+    public static int getLoggedInUserId() {
         return loggedInUserId;
     }
 
-    public static void setLoggedInUserId(String userId) {
+    public static void setLoggedInUserId(Integer userId) {
         loggedInUserId = userId;
     }
 }
